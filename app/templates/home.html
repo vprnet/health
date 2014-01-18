@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}VPR's Coverage of Healthcare in Vermont{% endblock %}
+
+{% block header_title %}Healthcare In Vermont{% endblock %}
+
+{% block content %}
+<div id="health_cover">
+    <div class="container">
+        <div class="row">
+            <h1>Healthcare Coverage</h1>
+            <div class="col-sm-8">
+                <p>HSA, HRA and the ACA. Platinum, Gold, Silver and Bronze. Vermont Health Connect. Single Payer.</p>
+                <p>There's a lot to keep track of these days surrounding healthcare. VPR reports the latest news and helps explain what it all means to you.</p>
+            </div>
+            <div class="col-sm-4 hidden-xs">
+                <div id="google-ad" class="underwriter">
+                    <section><!-- VPR-Sitewide-UW-1-300x250 --> <div id='div-gpt-ad-1365016583819-0' style='width:300px; height:250px;'> <script type='text/javascript'> googletag.cmd.push(function() { googletag.display('div-gpt-ad-1365016583819-0'); }); </script> </div> <nav> <ul id="underwriter-nav"> <li><a href="http://www.vpr.net/apps/underwriter-directory/index">Find An Underwriter</a></li> -- <li><a href="http://www.vpr.net/support/business_underwriting/">Become An Underwriter</a></li> </ul> </nav></section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="follow">
+<div class="container">
+    <div class="row">
+        <h2><a href="{{ follow.link }}">Follow The Money</a></h2>
+        <div class="col-sm-5">
+            <img class="img-responsive" src="http://mediad.publicbroadcasting.net/p/vpr/files/styles/placed_wide/public/201312/26-million.png" alt="CGI overruns have cost Vermont $26 million">
+        </div>
+        <div class="col-sm-7">
+            <p>{{ follow.text|safe }}</p>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="river">
+    <div class="container">
+    <div class="row story-row">
+    <div class="col-xs-12">
+    <h2>Latest Reporting</h2>
+    </div>
+    {% for story in stories %}
+        <div class="story-box col-sm-6">
+            <div class="row">
+                    <div class="col-xs-12">
+                    <p class="dateline">{{ story.date }}</p>
+                    <h3 class="title"><a href="{{ story.link }}">{{ story.title }}</a></h3>
+                    </div>
+            </div>
+            <div id="text" class="row">
+                <div class="col-xs-12">
+                    <div id="story_image">
+                    {% if story.image %}
+                        <a href="{{ story.link }}"><img src="{{ story.image }}" class="img-responsive pull-left" alt="{{ story.title }}"></a>
+                    {% endif %}
+                    </div>
+                    <p>{{ story.text|safe }}</p>
+                </div>
+            </div>
+        </div>
+    {% if loop.index != 10 and loop.index is divisibleby 2 %}
+    </div>
+    <div class="row story-row">
+    {% elif loop.index == 10 %}
+    </div>
+    {% endif %}
+    {% endfor %}
+    <hr>
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-8">
+        <p id="more_stories"><a href="http://digital.vpr.net/topic/health-care" alt="story archive">View Archive</a></p>
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<div id="hood">
+<div class="container">
+    <div class="row">
+        <h2><a href="http://www.vpr.net/apps/health/network">Under The Hood</a></h2>
+        <p id="no_mobile" class="visible-xs">Not mobile optimized</p>
+        <div class="col-sm-5">
+            <a href="http://www.vpr.net/apps/health/network"><img class="img-responsive" src="{{ url_for('static', filename='img/hood.png') }}"></a>
+        </div>
+        <div class="col-sm-7">
+            <p>Explore <a href="http://www.vpr.net/apps/health/network">our interactive guide</a> of <a href="http://healtchconnect.vermont.gov">Vermont Health Connect</a>, the state's web portal for the healthcare exchange.</p>
+            <p>This interative visualization will take you on a step by step tour through the system that users interact with to choose and&mdash;eventually&mdash;pay for the new insurance products available due to the Affordable Care Act.</p>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div id="bob_peter">
+<div id="body" class="container">
+    <div class="row">
+    <div class="col-xs-12">
+        <h2>Our Reporters</h2>
+    </div>
+    <div class="col-sm-6">
+        <div class="bio_line row">
+            <div class="col-xs-4">
+            <img class="img-responsive" src="{{ url_for('static', filename='img/vpr-bob-kinzel.jpg' )}}">
+            </div>
+            <div class="col-xs-8">
+            <h3>Bob Kinzel</h3>
+            <h4>@<a href="http://twitter.com/vprkinzel">VPRKinzel</a></h4>
+            <p>Bob Kinzel is a veteran Vermont journalist who specializes in political reporting. Prior to joining the VPR staff in 2002, Bob ran the Vermont News Service for 21 years. This session, he will be following health care issues and legislation that deals with changes to Vermont's tax system, including using property taxes to finance education.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="bio_line row">
+            <div class="col-xs-4">
+            <img class="img-responsive" src="{{ url_for('static', filename='img/vpr-peter-hirschfield.jpg' )}}">
+            </div>
+            <div class="col-xs-8">
+                <h3>Peter Hirschfeld</h3>
+                <h4>@<a href="http://twitter.com/petehirschfeld">PeteHirschfeld</a></h4>
+                <p>Peter Hirschfeld has covered the Statehouse since 2009, most recently as bureau chief for the <em>Rutland Herald</em> and <em>Times Argus</em>. He began his career in 2003, working as a local sports reporter and copy editor at the <em>Times Argus.</em></p>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+</div>
+
+
+<div id="resources">
+<div class="container">
+<div class="row">
+    <h2>Healthcare Resources</h2>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <p><a href="https://healthconnect.vermont.gov/">Vermont Health Connect</a></p>
+        <p><a href="http://info.healthconnect.vermont.gov/">Help Center</a></p>
+    </div>
+    <div class="col-sm-6">
+        <p><a href="http://info.healthconnect.vermont.gov/tax_credit_calculator">Subsidy Calculator</a></p>
+        <p><a href="http://info.healthconnect.vermont.gov/assister-map?field_county_tid=All&field_navigator_type_tid=574">Find A Navigator</a></p>
+    </div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script-ck.js') }}"></script>
+{% endblock %}
