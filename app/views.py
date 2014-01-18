@@ -18,8 +18,6 @@ def index():
         'twitter_hashtag': 'VTpoli'
     }
 
-    print follow
-
     return render_template('home.html', stories=stories,
         social=social,
         page_url=page_url,
