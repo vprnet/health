@@ -93,7 +93,8 @@ body {
     padding-bottom: 20px;
     text-align: center; }
   #health_cover p {
-    font-size: 28px;
+    margin-top: 30px;
+    font-size: 24px;
     font-weight: 300; }
   #health_cover #google-ad {
     float: right; }
@@ -102,6 +103,20 @@ body {
       font-size: 42px; }
     #health_cover p {
       font-size: 18px; } }
+
+#follow #slideshow {
+  position: relative; }
+  #follow #slideshow i.icon {
+    font-size: 22px;
+    padding: 0 5px;
+    cursor: pointer; }
+  #follow #slideshow i.inactive {
+    color: #a9abad;
+    cursor: default; }
+  #follow #slideshow #chevron_nav {
+    float: right; }
+  #follow #slideshow #circle_progress i.icon {
+    font-size: 16px; }
 
 #river {
   background: white;
@@ -185,12 +200,17 @@ body {
         min-height: 65px; } }
   #follow img, #hood img {
     border: 1px solid #c3c5c6;
-    margin-bottom: 20px; }
+    margin-bottom: 10px; }
   #follow #no_mobile, #hood #no_mobile {
     text-align: center;
     font-size: 16px;
     font-weight: 400;
     color: #75787b; }
+  #follow #listen, #hood #listen {
+    font-size: 16px;
+    font-weight: 400; }
+    #follow #listen #file, #hood #listen #file {
+      margin-left: 20px; }
 
 footer {
   font-size: 10px;

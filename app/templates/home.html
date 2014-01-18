@@ -26,11 +26,16 @@
 <div class="container">
     <div class="row">
         <h2><a href="{{ follow.link }}">Follow The Money</a></h2>
-        <div class="col-sm-5">
+        <div id="slideshow" class="col-sm-5">
             <img class="img-responsive" src="http://mediad.publicbroadcasting.net/p/vpr/files/styles/placed_wide/public/201312/26-million.png" alt="CGI overruns have cost Vermont $26 million">
+            <div id="chevron_nav"><i class="icon ion-chevron-left inactive"></i><i class="icon ion-chevron-right"></i></div>
+            <div id="circle_progress"><i class="icon ion-ios7-circle-filled"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i></div>
         </div>
         <div class="col-sm-7">
             <p>{{ follow.text|safe }}</p>
+            <p id="listen"><span class="glyphicon glyphicon-play"></span>
+            <a href="http://cpa.ds.npr.org/vpr/audio/2013/12/vpr-news-health-money-20131218.mp3">Listen To Report</a>  <span id="file" class="glyphicon glyphicon-file"></span> <a href="http://digital.vpr.net/post/following-money-vermont-health-connect">View Article</a>
+            </p>
         </div>
     </div>
 </div>

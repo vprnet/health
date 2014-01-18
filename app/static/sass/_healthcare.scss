@@ -15,7 +15,8 @@ body {
         text-align: center;
     }
     p {
-        font-size: 28px;
+        margin-top: 30px;
+        font-size: 24px;
         font-weight: 300;
     }
     #google-ad {
@@ -31,6 +32,28 @@ body {
     }
 }
 
+#follow {
+    #slideshow {
+        position: relative;
+        i.icon {
+            font-size: 22px;
+            padding: 0 5px;
+            cursor: pointer;
+        }
+        i.inactive {
+            color: lighten($gray, 20%);
+            cursor: default;
+        }
+        #chevron_nav {
+            float: right;
+        }
+        #circle_progress {
+            i.icon {
+                font-size: 16px;
+            }
+        }
+    }
+}
 
 #river {
     background: white;
@@ -132,13 +155,20 @@ body {
     }
     img {
         border: 1px solid lighten($gray, 30%);
-        margin-bottom: 20px;
+        margin-bottom: 10px;
     }
     #no_mobile {
         text-align: center;
         font-size: 16px;
         font-weight: 400;
         color: $gray;
+    }
+    #listen {
+        font-size: 16px;
+        font-weight: 400;
+        #file {
+            margin-left: 20px;
+        }
     }
 }
 
