@@ -25,7 +25,7 @@ body {
     font-size: 22px;
     display: inline;
     position: relative;
-    top: 4px;
+    top: 8px;
     left: 10px; }
     @media (max-width: 768px) {
       .navbar #navbar-title {
@@ -87,36 +87,32 @@ body {
 #health_cover {
   background: white;
   padding: 20px 0 40px; }
-  #health_cover h1 {
-    font-size: 62px;
-    font-weight: 300;
-    padding-bottom: 20px;
-    text-align: center; }
-  #health_cover p {
-    margin-top: 30px;
-    font-size: 24px;
-    font-weight: 300; }
-  #health_cover #google-ad {
-    float: right; }
-  @media (max-width: 768px) {
-    #health_cover h1 {
-      font-size: 42px; }
-    #health_cover p {
-      font-size: 18px; } }
-
-#follow #slideshow {
-  position: relative; }
-  #follow #slideshow i.icon {
-    font-size: 22px;
-    padding: 0 5px;
-    cursor: pointer; }
-  #follow #slideshow i.inactive {
-    color: #a9abad;
-    cursor: default; }
-  #follow #slideshow #chevron_nav {
-    float: right; }
-  #follow #slideshow #circle_progress i.icon {
-    font-size: 16px; }
+  #health_cover div.top_story {
+    margin-top: 10px; }
+    #health_cover div.top_story .dateline {
+      margin: 0; }
+    #health_cover div.top_story h3 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      line-height: 1.3em; }
+    #health_cover div.top_story a {
+      color: #646c6c;
+      border-bottom: 2px solid #dddedf; }
+      #health_cover div.top_story a:hover {
+        text-decoration: none;
+        border-color: #75787b;
+        color: #3f4444; }
+    #health_cover div.top_story .byline, #health_cover div.top_story .dateline {
+      color: #75787b; }
+    #health_cover div.top_story img {
+      margin-bottom: 15px; }
+    #health_cover div.top_story .story_text {
+      font-size: 18px;
+      font-weight: 300; }
+  #health_cover #uw_block #google-ad {
+    margin-top: 60px; }
+  #health_cover #uw_block #about_bob {
+    max-width: 300px; }
 
 #river {
   background: white;
@@ -143,10 +139,13 @@ body {
         font-size: 18px; } }
   #river .story-box {
     margin-top: 30px; }
-  #river .dateline {
+  #river .dateline, #river .byline {
     font-weight: 400;
     color: #707979;
     margin-bottom: 0; }
+  #river .byline {
+    font-size: 12px;
+    margin-top: 5px; }
   #river #more_stories {
     text-align: right;
     font-size: 20px;
@@ -154,63 +153,76 @@ body {
     @media (max-width: 768px) {
       #river #more_stories {
         font-size: 18px; } }
-  #river #text {
+  #river .story_text {
     margin-top: 20px;
     font-weight: 300;
     font-size: 17px; }
-  #river #story_image {
+  #river .story_image {
     max-width: 120px;
     max-height: 80px; }
-    #river #story_image img {
+    #river .story_image img {
       margin-right: 10px; }
 
-#follow, #hood {
+#follow {
   border: 1px solid #c3c5c6;
   background: #dddedf;
   padding: 20px 0 50px;
   color: #3f4444; }
-  #follow p, #hood p {
-    font-size: 22px;
+  #follow #slideshow {
+    position: relative; }
+    #follow #slideshow i.icon {
+      font-size: 22px;
+      padding: 0 5px;
+      cursor: pointer; }
+    #follow #slideshow i.inactive {
+      color: #a9abad;
+      cursor: default; }
+    #follow #slideshow #chevron_nav {
+      float: right; }
+    #follow #slideshow #circle_progress i.icon {
+      font-size: 16px; }
+  #follow p {
+    font-size: 16px;
     font-weight: 300;
-    margin-bottom: 15px; }
-    #follow p a, #hood p a {
+    margin: 15px 0; }
+    #follow p a {
       color: #5c5e61;
       border-bottom: 2px solid #c3c5c6; }
-      #follow p a:hover, #hood p a:hover {
+      #follow p a:hover {
         text-decoration: none;
         border-color: #3f4444;
         color: #3f4444; }
-  #follow h2, #hood h2 {
+  #follow h2 {
     text-align: center;
-    font-size: 62px;
+    font-size: 36px;
     font-weight: 300;
     margin-bottom: 50px; }
-    #follow h2 a, #hood h2 a {
+    #follow h2 a {
       color: #5c5e61;
       border-bottom: 3px solid #c3c5c6; }
-      #follow h2 a:hover, #hood h2 a:hover {
+      #follow h2 a:hover {
         text-decoration: none;
         border-color: #3f4444;
         color: #3f4444; }
-  #follow h3, #hood h3 {
+  #follow h3 {
     font-size: 30px;
     font-weight: 300; }
     @media (max-width: 1000px) and (min-width: 768px) {
-      #follow h3, #hood h3 {
+      #follow h3 {
         min-height: 65px; } }
-  #follow img, #hood img {
+  #follow img {
     border: 1px solid #c3c5c6;
     margin-bottom: 10px; }
-  #follow #no_mobile, #hood #no_mobile {
+  #follow #no_mobile {
     text-align: center;
     font-size: 16px;
     font-weight: 400;
     color: #75787b; }
-  #follow #listen, #hood #listen {
+  #follow .file {
+    margin-left: 30px; }
+  #follow #listen {
     font-size: 16px;
     font-weight: 400; }
-    #follow #listen #file, #hood #listen #file {
-      margin-left: 20px; }
 
 footer {
   font-size: 10px;

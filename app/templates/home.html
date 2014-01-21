@@ -1,22 +1,57 @@
 {% extends "base.html" %}
 
-{% block title %}VPR's Coverage of Healthcare in Vermont{% endblock %}
+{% block title %}VPR's Coverage of Health Care in Vermont{% endblock %}
 
-{% block header_title %}Healthcare In Vermont{% endblock %}
+{% block header_title %}Health Care In Vermont{% endblock %}
 
 {% block content %}
 <div id="health_cover">
     <div class="container">
         <div class="row">
-            <h1>Healthcare Coverage</h1>
             <div class="col-sm-8">
-                <p>HSA, HRA and the ACA. Platinum, Gold, Silver and Bronze. Vermont Health Connect. Single Payer.</p>
-                <p>There's a lot to keep track of these days surrounding healthcare. VPR reports the latest news and helps explain what it all means to you.</p>
+            <h2>Most Recent Stories</h2>
+            {% for story in most_recent %}
+                <div class="row top_story">
+                    <div class="col-xs-12">
+                    {% if story.image and story.landscape %}
+                        <a href="{{ story.link }}"><img src="{{ story.image }}" class="img-responsive cover_photo" alt="{{ story.title }}"></a>
+                    {% endif %}
+                    <p class="dateline">{{ story.date }}</p>
+                    <h3 class="title"><a href="{{ story.link }}">{{ story.title }}</a></h3>
+                    <p class="byline">By {{ story.byline|upper }}</p>
+                    <div class="row story_text">
+                        {% if story.image and not story.landscape %}
+                        <div class="col-sm-4 story_image">
+                            <a href="{{ story.link }}"><img src="{{ story.image }}" class="img-responsive pull-left" alt="{{ story.title }}"></a>
+                        </div>
+                        <div class="col-sm-8">
+                        {% else %}
+                        <div class="col-sm-12">
+                        {% endif %}
+                            <p>{{ story.text|safe }}</p>
+                            <p><span class="file glyphicon glyphicon-file"></span> <a href="http://digital.vpr.net/post/following-money-vermont-health-connect">Read the Article</a></p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <hr>
+            {% endfor %}
             </div>
-            <div class="col-sm-4 hidden-xs">
-                <div id="google-ad" class="underwriter">
+            <div id="uw_block" class="col-sm-4">
+                <div id="google-ad" class="underwriter hidden-sm">
                     <section><!-- VPR-Sitewide-UW-1-300x250 --> <div id='div-gpt-ad-1365016583819-0' style='width:300px; height:250px;'> <script type='text/javascript'> googletag.cmd.push(function() { googletag.display('div-gpt-ad-1365016583819-0'); }); </script> </div> <nav> <ul id="underwriter-nav"> <li><a href="http://www.vpr.net/apps/underwriter-directory/index">Find An Underwriter</a></li> -- <li><a href="http://www.vpr.net/support/business_underwriting/">Become An Underwriter</a></li> </ul> </nav></section>
                 </div>
+                <h3>Our Reporters</h3>
+                {% for reporter in reporters %}
+                <div class="row">
+                    <div class="col-xs-3">
+                        <img class="img-responsive img-circle" src="{{ reporter.url }}" alt="Photo of {{ reporter.name }}">
+                    </div>
+                    <div class="col-xs-9">
+                        <h4>{{ reporter.name }}</h4>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -25,17 +60,23 @@
 <div id="follow">
 <div class="container">
     <div class="row">
-        <h2><a href="{{ follow.link }}">Follow The Money</a></h2>
-        <div id="slideshow" class="col-sm-5">
+        <div id="slideshow" class="col-sm-6">
+            <h2><a href="{{ follow.link }}">Follow The Money</a></h2>
             <img class="img-responsive" src="http://mediad.publicbroadcasting.net/p/vpr/files/styles/placed_wide/public/201312/26-million.png" alt="CGI overruns have cost Vermont $26 million">
             <div id="chevron_nav"><i class="icon ion-chevron-left inactive"></i><i class="icon ion-chevron-right"></i></div>
             <div id="circle_progress"><i class="icon ion-ios7-circle-filled"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i></div>
-        </div>
-        <div class="col-sm-7">
             <p>{{ follow.text|safe }}</p>
             <p id="listen"><span class="glyphicon glyphicon-play"></span>
-            <a href="http://cpa.ds.npr.org/vpr/audio/2013/12/vpr-news-health-money-20131218.mp3">Listen To Report</a>  <span id="file" class="glyphicon glyphicon-file"></span> <a href="http://digital.vpr.net/post/following-money-vermont-health-connect">View Article</a>
+            <a href="http://cpa.ds.npr.org/vpr/audio/2013/12/vpr-news-health-money-20131218.mp3">Listen To Report</a>  <span class="file glyphicon glyphicon-file"></span> <a href="http://digital.vpr.net/post/following-money-vermont-health-connect">View Article</a>
             </p>
+        <hr class="visible-xs">
+        </div>
+        <div class="col-sm-6">
+            <h2><a href="http://www.vpr.net/apps/health/network">Under The Hood</a></h2>
+            <p id="no_mobile" class="visible-xs">Not mobile optimized</p>
+            <a href="http://www.vpr.net/apps/health/network"><img class="img-responsive" src="{{ url_for('static', filename='img/hood.png') }}"></a>
+            <p>Explore <a href="http://www.vpr.net/apps/health/network">our interactive guide</a> of <a href="http://healtchconnect.vermont.gov">Vermont Health Connect</a>, the state's web portal for the healthcare exchange.</p>
+            <p>This interative visualization will take you on a step by step tour through the system that users interact with to choose and&mdash;eventually&mdash;pay for the new insurance products available due to the Affordable Care Act.</p>
         </div>
     </div>
 </div>
@@ -45,7 +86,7 @@
     <div class="container">
     <div class="row story-row">
     <div class="col-xs-12">
-    <h2>Latest Reporting</h2>
+    <h2>More Reporting</h2>
     </div>
     {% for story in stories %}
         <div class="story-box col-sm-6">
@@ -53,11 +94,12 @@
                     <div class="col-xs-12">
                     <p class="dateline">{{ story.date }}</p>
                     <h3 class="title"><a href="{{ story.link }}">{{ story.title }}</a></h3>
+                    <p class="byline">By {{ story.byline|upper }}</p>
                     </div>
             </div>
-            <div id="text" class="row">
+            <div class="story_text row">
                 <div class="col-xs-12">
-                    <div id="story_image">
+                    <div class="story_image">
                     {% if story.image %}
                         <a href="{{ story.link }}"><img src="{{ story.image }}" class="img-responsive pull-left" alt="{{ story.title }}"></a>
                     {% endif %}
@@ -86,14 +128,7 @@
 <div id="hood">
 <div class="container">
     <div class="row">
-        <h2><a href="http://www.vpr.net/apps/health/network">Under The Hood</a></h2>
-        <p id="no_mobile" class="visible-xs">Not mobile optimized</p>
         <div class="col-sm-5">
-            <a href="http://www.vpr.net/apps/health/network"><img class="img-responsive" src="{{ url_for('static', filename='img/hood.png') }}"></a>
-        </div>
-        <div class="col-sm-7">
-            <p>Explore <a href="http://www.vpr.net/apps/health/network">our interactive guide</a> of <a href="http://healtchconnect.vermont.gov">Vermont Health Connect</a>, the state's web portal for the healthcare exchange.</p>
-            <p>This interative visualization will take you on a step by step tour through the system that users interact with to choose and&mdash;eventually&mdash;pay for the new insurance products available due to the Affordable Care Act.</p>
         </div>
     </div>
 </div>

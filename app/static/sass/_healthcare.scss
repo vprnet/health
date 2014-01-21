@@ -8,49 +8,42 @@ body {
 #health_cover {
     background: white;
     padding: 20px 0 40px;
-    h1 {
-        font-size: 62px;
-        font-weight: 300;
-        padding-bottom: 20px;
-        text-align: center;
-    }
-    p {
-        margin-top: 30px;
-        font-size: 24px;
-        font-weight: 300;
-    }
-    #google-ad {
-        float: right;
-    }
-    @media (max-width: 768px) {
-        h1 {
-            font-size: 42px;
+    div.top_story {
+        margin-top: 10px;
+        .dateline {
+            margin: 0;
         }
-        p {
-            font-size: 18px;
+        h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+            line-height: 1.3em;
         }
-    }
-}
-
-#follow {
-    #slideshow {
-        position: relative;
-        i.icon {
-            font-size: 22px;
-            padding: 0 5px;
-            cursor: pointer;
-        }
-        i.inactive {
-            color: lighten($gray, 20%);
-            cursor: default;
-        }
-        #chevron_nav {
-            float: right;
-        }
-        #circle_progress {
-            i.icon {
-                font-size: 16px;
+        a {
+            color: lighten($black, 15%);
+            border-bottom: 2px solid lighten($gray, 40%);
+            &:hover {
+                text-decoration: none;
+                border-color: $gray;
+                color: $black;
             }
+        }
+        .byline, .dateline {
+            color: $gray;
+        }
+        img {
+            margin-bottom: 15px;
+        }
+        .story_text {
+            font-size: 18px;
+            font-weight: 300;
+        }
+    }
+    #uw_block {
+        #google-ad {
+            margin-top: 60px;
+        }
+        #about_bob {
+            max-width: 300px;
         }
     }
 }
@@ -85,10 +78,14 @@ body {
     .story-box {
         margin-top: 30px;
     }
-    .dateline {
+    .dateline, .byline {
         font-weight: 400;
         color: lighten($black, 20%);
         margin-bottom: 0;
+    }
+    .byline {
+        font-size: 12px;
+        margin-top: 5px;
     }
     #more_stories {
         text-align: right;
@@ -98,12 +95,12 @@ body {
             font-size: 18px;
         }
     }
-    #text {
+    .story_text {
         margin-top: 20px;
         font-weight: 300;
         font-size: 17px;
     }
-    #story_image {
+    .story_image {
         max-width: 120px;
         max-height: 80px;
         img {
@@ -112,15 +109,36 @@ body {
     }
 }
 
-#follow, #hood {
+#follow {
+    #slideshow {
+        position: relative;
+        i.icon {
+            font-size: 22px;
+            padding: 0 5px;
+            cursor: pointer;
+        }
+        i.inactive {
+            color: lighten($gray, 20%);
+            cursor: default;
+        }
+        #chevron_nav {
+            float: right;
+        }
+        #circle_progress {
+            i.icon {
+                font-size: 16px;
+            }
+        }
+    }
+
     border: 1px solid lighten($gray, 30%);
     background: lighten($gray, 40%);
     padding: 20px 0 50px;
     color: $black;
     p {
-        font-size: 22px;
+        font-size: 16px;
         font-weight: 300;
-        margin-bottom: 15px;
+        margin: 15px 0;
         a {
             color: darken($gray, 10%);
             border-bottom: 2px solid lighten($gray, 30%);
@@ -133,7 +151,7 @@ body {
     }
     h2 {
         text-align: center;
-        font-size: 62px;
+        font-size: 36px;
         font-weight: 300;
         margin-bottom: 50px;
         a {
@@ -163,12 +181,12 @@ body {
         font-weight: 400;
         color: $gray;
     }
+    .file {
+        margin-left: 30px;
+    }
     #listen {
         font-size: 16px;
         font-weight: 400;
-        #file {
-            margin-left: 20px;
-        }
     }
 }
 

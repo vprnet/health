@@ -1,5 +1,5 @@
 from index import app
-from query import api_feed
+from query import api_feed, reporter_list
 from flask import render_template, request
 from config import BASE_URL
 
@@ -8,6 +8,9 @@ from config import BASE_URL
 def index():
     page_url = BASE_URL + request.path
     stories = api_feed('245948266,186100276')
+    reporters = reporter_list('245948266,186100276')
+    most_recent = stories[:4]
+    stories = stories[4:]
     follow = api_feed(255414453, 1)[0]
     social = {
         'title': "VPR: Healthcare Coverage 2014",
@@ -18,9 +21,12 @@ def index():
         'twitter_hashtag': 'VTpoli'
     }
 
-    return render_template('home.html', stories=stories,
+    return render_template('home.html',
+        most_recent=most_recent,
+        stories=stories,
         social=social,
         page_url=page_url,
+        reporters=reporters,
         follow=follow)
 
 
