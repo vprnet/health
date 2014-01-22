@@ -41,9 +41,3 @@ def network():
         'twitter_hashtag': "ACA",
         'description': "Walk through Vermont Health Connect from account creation to insurance confirmation, discovering how the system works and where it currently doesn't."}
     return render_template('network.html', social=social, page_url=page_url)
-
-# TEMPLATING: Modularize things further. {% include social %} instead of that block in base
-# Also: an analytics include. Really break things down.
-
-#Make a bunch of templates so that any tag can be queried and you've got a template for it
-#Modularize design chunks too
