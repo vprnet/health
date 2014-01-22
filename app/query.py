@@ -14,6 +14,7 @@ size = 220, 165
 def api_feed(tag, numResults=10):
     """Query the NPR API using given tag ID, generate thumbnail when a story
     has an image. Return dictionary of results"""
+    #make your fonts bigger, and this red whitespace thing less offensive
 
     stories = query_api(tag, numResults=10)
 
@@ -25,6 +26,7 @@ def api_feed(tag, numResults=10):
         #except KeyError:
         #    image = 'static/img/thumbnails/irene-thumb.jpg'
         try:
+            # DRY: x = story['image'][0]['crop'][0]
             image = story['image'][0]['crop'][0]['src']
             width = story['image'][0]['crop'][0]['width']
             height = story['image'][0]['crop'][0]['height']
@@ -33,7 +35,7 @@ def api_feed(tag, numResults=10):
             else:
                 landscape = False
         except KeyError:
-            image = ''
+            image = '' #image = False
             landscape = False
             #image = 'http://www.vpr.net/apps/legislature/static/img/vpr-legislature-no-photo.png'
         link = story['link'][0]['$text']
@@ -45,6 +47,8 @@ def api_feed(tag, numResults=10):
             text = story['text']['paragraph'][0]['$text']
             if len(text) < 240:
                 text = text + '</p><p>' + story['text']['paragraph'][1]['$text']
+                # don't write HTML in Python. Get a list of paragraphs and
+                # use as many as you need to for some char limit
 
         except KeyError:
             try:
@@ -68,6 +72,7 @@ def reporter_list(tag, numResults=50):
     """Queries the API for bylines and returns an ordered list of name
     and a path to a photo. Ordered by number of stories"""
 
+    #Rewrite Reporter list for a code review from Joe
     stories = query_api(tag, numResults)
 
     name_list = []
@@ -106,11 +111,16 @@ def query_api(tag, numResults=10):
     url2 = '&apiKey=MDAyMTYyNjQyMDEyMjg5MzU3MTRhNDY5MA001&id='
 
     url = url1 + str(numResults) + url2
+    #use string formatting for above url
+    #pull the key in from config file
+
     query = url + str(tag)
 
     r = requests.get(query)
     j = json.loads(r.text)
+
     stories = j['list']['story']
+    #stories = j.get('list', []).get('story', ['error'])
 
     return stories
 
