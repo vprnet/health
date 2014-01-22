@@ -12,6 +12,7 @@ body {
 
 div.container {
     min-width: 850px;
+    max-width: 875px;
 }
 
 svg {
@@ -254,6 +255,8 @@ ul#social {
     }
 }
 
-footer {
-    float: left;
+#footer {
+    footer {
+        float: left;
+    }
 }

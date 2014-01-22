@@ -84,7 +84,8 @@ body {
   padding-top: 0; }
 
 div.container {
-  min-width: 850px; }
+  min-width: 850px;
+  max-width: 875px; }
 
 svg {
   position: absolute;
@@ -277,5 +278,5 @@ ul#social {
     #navigate a:hover {
       text-decoration: none; }
 
-footer {
+#footer footer {
   float: left; }

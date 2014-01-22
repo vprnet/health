@@ -1,9 +1,13 @@
-{% extends "base-network.html" %}
+{% extends "base.html" %}
 
 {% block title %}Under The Hood: VT Health Connect | VPR{% endblock %}
 
+{% block style %}
+    <link href="{{ url_for('static', filename='css/network.css') }}" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
-<div id="network-map">
+<div class="container" id="network-map">
     <div id="explanation">
         <div class="active" id="par0">
             <h3>How To Use This Tool</h3>
@@ -104,14 +108,16 @@
     </div>
 </div>
 
-        <footer>
-            <p>Made with the <a href="https://github.com/vprnet/app-template">VPR App Template</a> and <a href="http://d3js.org">D3</a>.</p>
-        </footer>
 
 {% endblock %}
 
+{% block footer %}
+    <footer>
+        <p>Made with the <a href="https://github.com/vprnet/app-template">VPR App Template</a> and <a href="http://d3js.org">D3</a>.</p>
+    </footer>
+{% endblock %}
+
 {% block scripts %}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
-<script src="{{ url_for('static', filename='js/connect3-ck.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/connect3-ck.js') }}"></script>
 {% endblock %}
