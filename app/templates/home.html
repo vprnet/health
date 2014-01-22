@@ -28,7 +28,9 @@
                         {% else %}
                         <div class="col-sm-12">
                         {% endif %}
-                            <p>{{ story.text|safe }}</p>
+                        {% for paragraph in story.text %}
+                            <p>{{ paragraph|safe }}</p>
+                        {% endfor %}
                             <p><span class="file glyphicon glyphicon-file"></span> <a href="http://digital.vpr.net/post/following-money-vermont-health-connect">Read the Article</a></p>
                         </div>
                     </div>
@@ -104,7 +106,9 @@
                         <a href="{{ story.link }}"><img src="{{ story.image }}" class="img-responsive pull-left" alt="{{ story.title }}"></a>
                     {% endif %}
                     </div>
-                    <p>{{ story.text|safe }}</p>
+                    {% for paragraph in story.text %}
+                    <p>{{ paragraph|safe }}</p>
+                    {% endfor %}
                 </div>
             </div>
         </div>

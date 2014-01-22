@@ -4,57 +4,56 @@ import requests
 import Image
 import ImageOps
 import urllib
+import os
 from bs4 import BeautifulSoup as Soup
 from datetime import datetime
 from cStringIO import StringIO
+from config import NPR_API_KEY
 
-size = 220, 165
 
+def api_feed(tag, numResults=1, char_limit=200, thumbnail=False):
+    """Query the NPR API using given tag ID, return dictionary of results"""
 
-def api_feed(tag, numResults=10):
-    """Query the NPR API using given tag ID, generate thumbnail when a story
-    has an image. Return dictionary of results"""
-    #make your fonts bigger, and this red whitespace thing less offensive
-
-    stories = query_api(tag, numResults=10)
+    stories = query_api(tag, numResults)
 
     story_list = []
     for story in stories:
-        #try:
-        #    image_url = story['image'][0]['crop'][0]['src']
-        #    image = generate_thumbnail(image_url)
-        #except KeyError:
-        #    image = 'static/img/thumbnails/irene-thumb.jpg'
+        link = story['link'][0]['$text']
+        date = convert_date(story['storyDate']['$text'])
+        title = story['title']['$text'].strip()
+        byline = story['byline'][0]['name']['$text']
+
         try:
-            # DRY: x = story['image'][0]['crop'][0]
-            image = story['image'][0]['crop'][0]['src']
-            width = story['image'][0]['crop'][0]['width']
-            height = story['image'][0]['crop'][0]['height']
+            story_image = story['image'][0]['crop'][0]
+            image = story_image['src']
+            width = story_image['width']
+            height = story_image['height']
             if int(width) > int(height):
                 landscape = True
             else:
                 landscape = False
         except KeyError:
-            image = '' #image = False
+            image = False  # set equal to url string for default image
             landscape = False
-            #image = 'http://www.vpr.net/apps/legislature/static/img/vpr-legislature-no-photo.png'
-        link = story['link'][0]['$text']
-        date = convert_date(story['storyDate']['$text'])
-        title = story['title']['$text'].strip()
-        byline = story['byline'][0]['name']['$text']
-        print title, landscape
-        try:
-            text = story['text']['paragraph'][0]['$text']
-            if len(text) < 240:
-                text = text + '</p><p>' + story['text']['paragraph'][1]['$text']
-                # don't write HTML in Python. Get a list of paragraphs and
-                # use as many as you need to for some char limit
 
-        except KeyError:
+        # Joe: best way to do this?
+        full_text = [i['$text'] for i in story['text']['paragraph'] if len(i) > 1]
+        # if len(i) > 1 ignores pars w/ no text, i.e. when images or audio
+        char_count = 0
+        text = []
+        for paragraph in full_text:
+            if char_count < char_limit:
+                text.append(paragraph)
+                char_count += len(paragraph)
+            else:
+                break
+
+        if thumbnail:
             try:
-                text = story['text']['paragraph'][1]['$text']
+                image_url = story['image'][0]['crop'][0]['src']
+                image = generate_thumbnail(image_url, size=(100, 100))
             except KeyError:
-                text = story['text']['paragraph'][2]['$text']
+                image = False
 
         story_list.append({
             'title': title,
@@ -65,14 +64,14 @@ def api_feed(tag, numResults=10):
             'byline': byline,
             'landscape': landscape
         })
+
     return story_list
 
 
 def reporter_list(tag, numResults=50):
     """Queries the API for bylines and returns an ordered list of name
-    and a path to a photo. Ordered by number of stories"""
+    and a path to a photo. Reporters ordered by number of stories"""
 
-    #Rewrite Reporter list for a code review from Joe
     stories = query_api(tag, numResults)
 
     name_list = []
@@ -86,10 +85,10 @@ def reporter_list(tag, numResults=50):
             try:
                 url = story['byline'][0]['link'][0]['$text']
                 byline['url'] = reporter_image(url)
+                byline['count'] = 1
+                reporters.append(byline)
             except KeyError:
-                byline['url'] = False
-            byline['count'] = 1
-            reporters.append(byline)
+                pass
         else:
             for reporter in reporters:
                 if reporter['name'] == name:
@@ -106,21 +105,19 @@ def reporter_list(tag, numResults=50):
 
 
 def query_api(tag, numResults=10):
-    url1 = ('http://api.npr.org/query?orgid=692&fields=title,byline,storyDate,image' +
-        ',text&sort=dateDesc&action=Or&output=JSON&numResults=')
-    url2 = '&apiKey=MDAyMTYyNjQyMDEyMjg5MzU3MTRhNDY5MA001&id='
-
-    url = url1 + str(numResults) + url2
-    #use string formatting for above url
-    #pull the key in from config file
-
-    query = url + str(tag)
+    id_string = ','.join([str(s) for s in tag])
+    query = ('http://api.npr.org/query?orgid=692' +
+        '&fields=title,byline,storyDate,image,text' +
+        '&sort=dateDesc' +
+        '&action=Or' +
+        '&output=JSON' +
+        '&numResults=%d' +
+        '&id=%s' +
+        '&apiKey=%s') % (numResults, id_string, NPR_API_KEY)
 
     r = requests.get(query)
     j = json.loads(r.text)
-
     stories = j['list']['story']
-    #stories = j.get('list', []).get('story', ['error'])
 
     return stories
 
@@ -134,25 +131,29 @@ def reporter_image(url):
     person_card = soup.find_all(id="person-card")[0]
     try:
         image = person_card.find_all('img')[0].get('src')
+        thumbnail = generate_thumbnail(image, size=(80, 80))
     except IndexError:
         image = False
+        thumbnail = False
 
-    return image
+    return thumbnail
 
 
-def generate_thumbnail(image_url):
-    thumbnail_path = 'static/img/thumbnails/'
-    unicorn = image_url
-    filename = unicorn.rsplit('/', 1)[1]
-    f = thumbnail_path + filename
-    f_save = '../' + f
+def generate_thumbnail(image_url, size=(220, 165)):
+    """Take an image src, generate a thumbnail, return new path"""
 
-    img_file = urllib.urlopen(image_url)
-    img = StringIO(img_file.read())
-    image = Image.open(img)
-    im = ImageOps.fit(image, size, Image.ANTIALIAS)
-    im.save(f_save)
-    return f
+    filename = image_url.rsplit('/', 1)[1]
+    path_to_read = 'static/img/thumbnails/' + filename
+    path_to_save = 'app/' + path_to_read
+
+    if not os.path.isfile(path_to_save):
+        img_file = urllib.urlopen(image_url)
+        img = StringIO(img_file.read())
+        image = Image.open(img)
+        im = ImageOps.fit(image, size, Image.ANTIALIAS)
+        im.save(path_to_save)
+
+    return path_to_read
 
 
 def convert_date(timestamp):
