@@ -11,6 +11,8 @@ AWS_SECRET_KEY = ''
 AWS_BUCKET = 'www.vpr.net'
 AWS_DIRECTORY = 'apps/health'
 
+NPR_API_KEY = ''
+
 # Cache Settings (units in seconds)
 STATIC_EXPIRES = 60 * 24 * 3600
 HTML_EXPIRES = 3600
@@ -28,7 +30,8 @@ else:
 
 ABSOLUTE_PATH = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))) + '/'
 
-if 'mparrilla' in ABSOLUTE_PATH:
+# If on my computer use local root
+if 'mparrilla' or 'm' in ABSOLUTE_PATH:
     PROJECT_ROOT = '/'
 else:
-    PROJECT_ROOT = AWS_DIRECTORY
+    PROJECT_ROOT = '/' + AWS_DIRECTORY

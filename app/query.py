@@ -105,6 +105,8 @@ def reporter_list(tag, numResults=50):
 
 
 def query_api(tag, numResults=10):
+    """Hits the NPR API, returns JSON story list"""
+
     id_string = ','.join([str(s) for s in tag])
     query = ('http://api.npr.org/query?orgid=692' +
         '&fields=title,byline,storyDate,image,text' +
@@ -157,6 +159,8 @@ def generate_thumbnail(image_url, size=(220, 165)):
 
 
 def convert_date(timestamp):
+    """Converts API timestamp to publication-ready dateline"""
+
     day = timestamp[5:7]
     month = datetime.strptime(timestamp[8:11], '%b').strftime('%B')
     year = timestamp[12:16]
