@@ -36,17 +36,17 @@ def api_feed(tag, numResults=1, char_limit=200, thumbnail=False):
             image = False  # set equal to url string for default image
             landscape = False
 
-        # Joe: best way to do this?
         full_text = [i['$text'] for i in story['text']['paragraph'] if len(i) > 1]
         # if len(i) > 1 ignores pars w/ no text, i.e. when images or audio
+
         char_count = 0
-        text = []
-        for paragraph in full_text:
-            if char_count < char_limit:
-                text.append(paragraph)
-                char_count += len(paragraph)
-            else:
-                break
+        paragraphs_needed = 0
+        while char_count < char_limit:
+            paragraph = full_text[paragraphs_needed]
+            char_count += len(paragraph)
+            paragraphs_needed += 1
+
+        text = full_text[:paragraphs_needed]
 
         if thumbnail:
             try:
