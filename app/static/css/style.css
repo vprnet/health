@@ -23,6 +23,7 @@ body {
   .navbar #navbar-title {
     color: #f2f2f2;
     font-size: 22px;
+    font-weight: 300;
     display: inline;
     position: relative;
     top: 8px;
@@ -83,36 +84,57 @@ body {
   background: black; }
   body .navbar {
     border-color: #468a29; }
+    body .navbar h1#navbar-title {
+      text-align: center; }
 
-#health_cover {
-  background: white;
+#above_fold {
+  background: #eaebeb;
   padding: 20px 0 40px; }
-  #health_cover div.top_story {
-    margin-top: 10px; }
-    #health_cover div.top_story .dateline {
+  #above_fold div.top_story {
+    background: white;
+    border: 1px solid #dddedf;
+    padding: 30px 10px;
+    margin-bottom: 15px; }
+    #above_fold div.top_story .dateline {
       margin: 0; }
-    #health_cover div.top_story h3 {
+    #above_fold div.top_story h3 {
       margin-top: 0;
       margin-bottom: 8px;
       line-height: 1.3em; }
-    #health_cover div.top_story a {
+    #above_fold div.top_story a {
       color: #646c6c;
       border-bottom: 2px solid #dddedf; }
-      #health_cover div.top_story a:hover {
+      #above_fold div.top_story a:hover {
         text-decoration: none;
         border-color: #75787b;
         color: #3f4444; }
-    #health_cover div.top_story .byline, #health_cover div.top_story .dateline {
+    #above_fold div.top_story .byline, #above_fold div.top_story .dateline {
       color: #75787b; }
-    #health_cover div.top_story img {
-      margin-bottom: 15px; }
-    #health_cover div.top_story .story_text {
+    #above_fold div.top_story div.landscape_img img {
+      margin: 0 auto 30px;
+      width: 100%; }
+    #above_fold div.top_story .story_text {
       font-size: 18px;
       font-weight: 300; }
-  #health_cover #uw_block #google-ad {
-    margin-top: 60px; }
-  #health_cover #uw_block #about_bob {
-    max-width: 300px; }
+  #above_fold #right_panel #reporters, #above_fold #right_panel #about_page {
+    margin-bottom: 15px;
+    background: white;
+    padding: 30px 20px;
+    border: 1px solid #dddedf; }
+    #above_fold #right_panel #reporters h3, #above_fold #right_panel #about_page h3 {
+      margin: 0 0 20px; }
+    #above_fold #right_panel #reporters div.reporter, #above_fold #right_panel #about_page div.reporter {
+      margin-top: 10px; }
+  #above_fold #right_panel #about_page p {
+    font-size: 18px;
+    font-weight: 300; }
+  #above_fold #right_panel #google-ad {
+    background: white;
+    border: 1px solid #dddedf; }
+    #above_fold #right_panel #google-ad #uw_container {
+      max-width: 300px;
+      margin: 30px auto 20px;
+      text-align: center; }
 
 #river {
   background: white;

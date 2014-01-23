@@ -2,14 +2,20 @@ body {
     background: black;
     .navbar {
         border-color: darken($green, 5%);
+        h1#navbar-title {
+            text-align: center;
+        }
     }
 }
 
-#health_cover {
-    background: white;
+#above_fold {
+    background: lighten($gray, 45%);
     padding: 20px 0 40px;
     div.top_story {
-        margin-top: 10px;
+        background: white;
+        border: 1px solid lighten($gray, 40%);
+        padding: 30px 10px;
+        margin-bottom: 15px;
         .dateline {
             margin: 0;
         }
@@ -30,20 +36,44 @@ body {
         .byline, .dateline {
             color: $gray;
         }
-        img {
-            margin-bottom: 15px;
+        div.landscape_img {
+            img {
+                margin: 0 auto 30px;
+                width: 100%;
+            }
         }
         .story_text {
             font-size: 18px;
             font-weight: 300;
         }
     }
-    #uw_block {
-        #google-ad {
-            margin-top: 60px;
+    #right_panel {
+        #reporters, #about_page {
+            margin-bottom: 15px;
+            background: white;
+            padding: 30px 20px;
+            border: 1px solid lighten($gray, 40%);
+            h3 {
+                margin: 0 0 20px;
+            }
+            div.reporter {
+                margin-top: 10px;
+            }
         }
-        #about_bob {
-            max-width: 300px;
+        #about_page {
+            p {
+                font-size: 18px;
+                font-weight: 300;
+            }
+        }
+        #google-ad {
+            background: white;
+            border: 1px solid lighten($gray, 40%);
+            #uw_container {
+                max-width: 300px;
+                margin: 30px auto 20px;
+                text-align: center;
+            }
         }
     }
 }
