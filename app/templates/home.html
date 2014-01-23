@@ -54,10 +54,37 @@
                         </div>
                         <div class="col-xs-9">
                             <h4>{{ reporter.name }}</h4>
+                            {% if reporter.handle %}
+                            <a class="twitter_handle" href="http://twitter.com/>{{ reporter.handle }}" alt="Twitter account for {{ reporter.name }}">@{{ reporter.handle }}</a>
+                            {% endif %}
                         </div>
                     </div>
                     {% endfor %}
                 </div>
+
+                <div class="featured" id="follow">
+                    <h3><a href="http://digital.vpr.net/post/following-money-vermont-health-connect" alt="Follow The Money">Follow The Money</a></h3>
+                    <img class="img-responsive" src="http://mediad.publicbroadcasting.net/p/vpr/files/styles/placed_wide/public/201312/26-million.png" alt="CGI overruns have cost Vermont $26 million">
+                    <div id="slideshow">
+                        <div id="chevron_nav"><i class="icon ion-chevron-left inactive"></i><i class="icon ion-chevron-right"></i></div>
+                        <div id="circle_progress"><i class="icon ion-ios7-circle-filled"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i></div>
+                    </div>
+                    {% for paragraph in follow.text %}
+                    <p>{{ paragraph }}</p>
+                    {% endfor %}
+                    <p id="listen"><span class="glyphicon glyphicon-play"></span>
+                    <a href="http://cpa.ds.npr.org/vpr/audio/2013/12/vpr-news-health-money-20131218.mp3">Listen To Report</a>  <span class="file glyphicon glyphicon-file"></span> <a href="http://digital.vpr.net/post/following-money-vermont-health-connect">View Article</a>
+                    </p>
+                </div>
+
+                <div class="featured hidden-xs" id="hood">
+                    <h3><a href="http://www.vpr.net/apps/health/network">Under The Hood</a></h3>
+                    <p id="no_mobile" class="visible-xs">Not mobile optimized</p>
+                    <a href="http://www.vpr.net/apps/health/network"><img class="img-responsive" src="{{ url_for('static', filename='img/hood.png') }}"></a>
+                    <p>Explore <a href="http://www.vpr.net/apps/health/network">our interactive guide</a> of <a href="http://healtchconnect.vermont.gov">Vermont Health Connect</a>, the state's web portal for the healthcare exchange.</p>
+                    <p>This interative visualization will take you on a step by step tour through the system that users interact with to choose and&mdash;eventually&mdash;pay for the new insurance products available due to the Affordable Care Act.</p>
+                </div>
+
                 <div id="google-ad" class="underwriter hidden-sm">
                     <div id="uw_container">
                     <section><!-- VPR-Sitewide-UW-1-300x250 --> <div id='div-gpt-ad-1365016583819-0' style='width:300px; height:250px;'> <script type='text/javascript'> googletag.cmd.push(function() { googletag.display('div-gpt-ad-1365016583819-0'); }); </script> </div> <nav> <ul id="underwriter-nav"> <li><a href="http://www.vpr.net/apps/underwriter-directory/index">Find An Underwriter</a></li> -- <li><a href="http://www.vpr.net/support/business_underwriting/">Become An Underwriter</a></li> </ul> </nav></section>
@@ -66,31 +93,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<div id="follow">
-<div class="container">
-    <div class="row">
-        <div id="slideshow" class="col-sm-6">
-            <h2><a href="{{ follow.link }}">Follow The Money</a></h2>
-            <img class="img-responsive" src="http://mediad.publicbroadcasting.net/p/vpr/files/styles/placed_wide/public/201312/26-million.png" alt="CGI overruns have cost Vermont $26 million">
-            <div id="chevron_nav"><i class="icon ion-chevron-left inactive"></i><i class="icon ion-chevron-right"></i></div>
-            <div id="circle_progress"><i class="icon ion-ios7-circle-filled"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i></div>
-            <p>{{ follow.text|safe }}</p>
-            <p id="listen"><span class="glyphicon glyphicon-play"></span>
-            <a href="http://cpa.ds.npr.org/vpr/audio/2013/12/vpr-news-health-money-20131218.mp3">Listen To Report</a>  <span class="file glyphicon glyphicon-file"></span> <a href="http://digital.vpr.net/post/following-money-vermont-health-connect">View Article</a>
-            </p>
-        <hr class="visible-xs">
-        </div>
-        <div class="col-sm-6">
-            <h2><a href="http://www.vpr.net/apps/health/network">Under The Hood</a></h2>
-            <p id="no_mobile" class="visible-xs">Not mobile optimized</p>
-            <a href="http://www.vpr.net/apps/health/network"><img class="img-responsive" src="{{ url_for('static', filename='img/hood.png') }}"></a>
-            <p>Explore <a href="http://www.vpr.net/apps/health/network">our interactive guide</a> of <a href="http://healtchconnect.vermont.gov">Vermont Health Connect</a>, the state's web portal for the healthcare exchange.</p>
-            <p>This interative visualization will take you on a step by step tour through the system that users interact with to choose and&mdash;eventually&mdash;pay for the new insurance products available due to the Affordable Care Act.</p>
-        </div>
-    </div>
-</div>
 </div>
 
 <div id="river">
@@ -137,51 +139,6 @@
     </div>
     </div>
 </div>
-
-<div id="hood">
-<div class="container">
-    <div class="row">
-        <div class="col-sm-5">
-        </div>
-    </div>
-</div>
-</div>
-
-
-<div id="bob_peter">
-<div id="body" class="container">
-    <div class="row">
-    <div class="col-xs-12">
-        <h2>Our Reporters</h2>
-    </div>
-    <div class="col-sm-6">
-        <div class="bio_line row">
-            <div class="col-xs-4">
-            <img class="img-responsive" src="{{ url_for('static', filename='img/vpr-bob-kinzel.jpg' )}}">
-            </div>
-            <div class="col-xs-8">
-            <h3>Bob Kinzel</h3>
-            <h4>@<a href="http://twitter.com/vprkinzel">VPRKinzel</a></h4>
-            <p>Bob Kinzel is a veteran Vermont journalist who specializes in political reporting. Prior to joining the VPR staff in 2002, Bob ran the Vermont News Service for 21 years. This session, he will be following health care issues and legislation that deals with changes to Vermont's tax system, including using property taxes to finance education.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="bio_line row">
-            <div class="col-xs-4">
-            <img class="img-responsive" src="{{ url_for('static', filename='img/vpr-peter-hirschfield.jpg' )}}">
-            </div>
-            <div class="col-xs-8">
-                <h3>Peter Hirschfeld</h3>
-                <h4>@<a href="http://twitter.com/petehirschfeld">PeteHirschfeld</a></h4>
-                <p>Peter Hirschfeld has covered the Statehouse since 2009, most recently as bureau chief for the <em>Rutland Herald</em> and <em>Times Argus</em>. He began his career in 2003, working as a local sports reporter and copy editor at the <em>Times Argus.</em></p>
-            </div>
-        </div>
-    </div>
-    </div>
-</div>
-</div>
-
 
 <div id="resources">
 <div class="container">

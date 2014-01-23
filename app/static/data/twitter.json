@@ -1,52 +1,53 @@
-{'Reporters': [
+{
+  "reporters": [
     {"name": "Mitch Wertlieb",
-    "handle": "@mwertlieb"},
+    "handle": "mwertlieb"},
 
     {"name": "Melody Bodette",
-    "handle": "@MelodyBodette"
+    "handle": "MelodyBodette"},
 
     {"name": "Sage Van Wing",
-    "handle": "@sagevanwing"},
+    "handle": "sagevanwing"},
 
     {"name": "Nancy Eve Cohen",
-    "handle":"@NancyEveCohen"},
+    "handle":"NancyEveCohen"},
 
     {"name": "Angela Evancie",
-    "handle": "@AJEvancie"},
+    "handle": "AJEvancie"},
 
-    {"name": "Charlotte Albright"
-    "handle": "@VPRAlbright"},
+    {"name": "Charlotte Albright",
+    "handle": "VPRAlbright"},
 
     {"name": "Bob Kinzel",
-    "handle": "@VPRKinzel"},
+    "handle": "VPRKinzel"},
 
     {"name": "John Dillon",
-    "handle": "@VPRDillon"},
+    "handle": "VPRDillon"},
 
     {"name": "Peter Hirschfeld",
-    "handle": "@PeteHirschfeld"},
+    "handle": "PeteHirschfeld"},
 
     {"name": "Jane Lindholm",
-    "handle": "@JaneLindholm"},
+    "handle": "JaneLindholm"},
 
     {"name": "Ric Cengeri",
-    "handle": "@riccengeri"},
+    "handle": "riccengeri"},
 
     {"name": "Steve Zind",
-    "handle": "@SZvt"},
+    "handle": "SZvt"},
 
     {"name": "John Van Hoesen",
-    "handle": "@JVHvt"},
+    "handle": "JVHvt"},
 
     {"name": "Patti Daniels",
-    "handle": "@pattidaniels"},
+    "handle": "pattidaniels"},
 
     {"name": "Taylor Dobbs",
-    "handle": "@taylordobbs"},
+    "handle": "taylordobbs"},
 
     {"name": "Annie Russell",
-    "handle": "@anniemrussell"},
+    "handle": "anniemrussell"},
 
     {"name": "Amy Kolb Noyes",
-    "handle": "@AmyKolbNoyes"}
+    "handle": "AmyKolbNoyes"}
 ]}

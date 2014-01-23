@@ -96,8 +96,14 @@ def reporter_list(tag, numResults=50):
 
     reporters = sorted(reporters, key=lambda k: k['count'], reverse=True)
 
+    with open('app/static/data/twitter.json') as f:
+        twitter_dict = json.load(f)
+
     ranked_list = []
     for reporter in reporters:
+        for twitter in twitter_dict['reporters']:
+            if reporter['name'] == twitter['name']:
+                reporter['handle'] = twitter['handle']
         if reporter['url'] and reporter['count'] > 1:
             ranked_list.append(reporter)
 

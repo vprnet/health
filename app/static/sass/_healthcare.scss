@@ -1,3 +1,13 @@
+@mixin lt_link($bg, $font-color, $border-width) {
+    text-decoration: none;
+    border-bottom: $border-width solid darken($bg, 10%);
+    color: lighten($font-color, 10%);
+    &:hover {
+        border-color: darken($bg, 30%);
+        color: $font-color;
+    }
+}
+
 body {
     background: black;
     .navbar {
@@ -54,7 +64,9 @@ body {
             padding: 30px 20px;
             border: 1px solid lighten($gray, 40%);
             h3 {
-                margin: 0 0 20px;
+                margin: 0 0 30px;
+                font-size: 32px;
+                text-align: center;
             }
             div.reporter {
                 margin-top: 10px;
@@ -66,20 +78,114 @@ body {
                 font-weight: 300;
             }
         }
+        #reporters {
+            img {
+                border: 3px solid lighten($gray, 20%);
+            }
+            h4 {
+                margin-bottom: 0;
+            }
+            a.twitter_handle {
+                font-weight: 500;
+                @include lt-link(white, darken($gray, 10%), 2px);
+            }
+        }
         #google-ad {
             background: white;
             border: 1px solid lighten($gray, 40%);
+            padding: 30px 20px;
             #uw_container {
                 max-width: 300px;
-                margin: 30px auto 20px;
+                margin: 0 auto;
                 text-align: center;
             }
         }
     }
 }
 
+.featured {
+    background: white;
+    padding: 20px;
+    border: 1px solid lighten($gray, 40%);
+    margin-bottom: 15px;
+    color: $black;
+    h3 {
+        font-size: 32px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+}
+
+#follow {
+    #slideshow {
+        position: relative;
+        i.icon {
+            font-size: 22px;
+            padding: 0 5px;
+            cursor: pointer;
+        }
+        i.inactive {
+            color: lighten($gray, 20%);
+            cursor: default;
+        }
+        #chevron_nav {
+            float: right;
+        }
+        #circle_progress {
+            i.icon {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+#follow, #hood {
+    h3 {
+        a {
+            @include lt-link(white, $black, 2px);
+        }
+    }
+    p {
+        font-size: 16px;
+        font-weight: 300;
+        margin: 15px 0;
+        a {
+            @include lt-link(white, $black, 2px);
+        }
+    }
+    img {
+        border: 1px solid lighten($gray, 30%);
+        margin-bottom: 10px;
+    }
+    #no_mobile {
+        text-align: center;
+        font-size: 16px;
+        font-weight: 400;
+        color: $gray;
+    }
+    .file {
+        margin-left: 30px;
+    }
+    #listen {
+        font-size: 16px;
+        font-weight: 400;
+    }
+}
+
+footer {
+    font-size: 10px;
+    color: lighten($gray, 20%);
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 32px !important;
+    }
+}
+
 #river {
     background: white;
+    border-top: 5px solid lighten($gray, 30%);
     padding: 30px 0;
     h2 {
         text-align: center;
@@ -135,133 +241,6 @@ body {
         max-height: 80px;
         img {
             margin-right: 10px;
-        }
-    }
-}
-
-#follow {
-    #slideshow {
-        position: relative;
-        i.icon {
-            font-size: 22px;
-            padding: 0 5px;
-            cursor: pointer;
-        }
-        i.inactive {
-            color: lighten($gray, 20%);
-            cursor: default;
-        }
-        #chevron_nav {
-            float: right;
-        }
-        #circle_progress {
-            i.icon {
-                font-size: 16px;
-            }
-        }
-    }
-
-    border: 1px solid lighten($gray, 30%);
-    background: lighten($gray, 40%);
-    padding: 20px 0 50px;
-    color: $black;
-    p {
-        font-size: 16px;
-        font-weight: 300;
-        margin: 15px 0;
-        a {
-            color: darken($gray, 10%);
-            border-bottom: 2px solid lighten($gray, 30%);
-            &:hover {
-                text-decoration: none;
-                border-color: $black;
-                color: $black;
-            }
-        }
-    }
-    h2 {
-        text-align: center;
-        font-size: 36px;
-        font-weight: 300;
-        margin-bottom: 50px;
-        a {
-            color: darken($gray, 10%);
-            border-bottom: 3px solid lighten($gray, 30%);
-            &:hover {
-                text-decoration: none;
-                border-color: $black;
-                color: $black;
-            }
-        }
-    }
-    h3 {
-        font-size: 30px;
-        font-weight: 300;
-        @media (max-width: 1000px) and (min-width: 768px) {
-            min-height: 65px;
-        }
-    }
-    img {
-        border: 1px solid lighten($gray, 30%);
-        margin-bottom: 10px;
-    }
-    #no_mobile {
-        text-align: center;
-        font-size: 16px;
-        font-weight: 400;
-        color: $gray;
-    }
-    .file {
-        margin-left: 30px;
-    }
-    #listen {
-        font-size: 16px;
-        font-weight: 400;
-    }
-}
-
-footer {
-    font-size: 10px;
-    color: lighten($gray, 20%);
-}
-
-@media (max-width: 768px) {
-    h2 {
-        font-size: 32px !important;
-    }
-}
-
-#bob_peter {
-    h2 {
-        font-size: 62px;
-        font-weight: 300;
-        color: white;
-        text-align: center;
-        margin-bottom: 30px;
-    }
-    .bio_line {
-        margin-top: 20px;
-    }
-    background: $black;
-    padding: 20px 0 60px;
-    color: lighten($gray, 30%);
-    h3 {
-        margin: 0;
-        color: lighten($gray, 45%);
-    }
-    h4 {
-        margin-top: 0;
-        &:hover {
-            color: white;
-        }
-        a {
-            color: lighten($gray, 30%);
-            border-bottom: 2px solid lighten($black, 15%);
-            &:hover {
-                text-decoration: none;
-                border-color: white;
-                color: white;
-            }
         }
     }
 }
