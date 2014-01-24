@@ -8,6 +8,13 @@
     }
 }
 
+@mixin transition($time) {
+    -webkit-transition: width $time linear !important;
+    -moz-transition: width $time linear !important;
+    -o-transition: width $time linear !important;
+    transition: width $time linear !important;
+}
+
 body {
     background: black;
     .navbar {
@@ -49,7 +56,6 @@ body {
         div.landscape_img {
             img {
                 margin: 0 auto 30px;
-                width: 100%;
             }
         }
         .story_text {
@@ -79,11 +85,12 @@ body {
             }
         }
         #reporters {
+            padding-left: 30px;
             img {
-                border: 3px solid lighten($gray, 20%);
             }
             h4 {
                 margin-bottom: 0;
+                font-size: 20px;
             }
             a.twitter_handle {
                 font-weight: 500;
@@ -242,6 +249,43 @@ footer {
         img {
             margin-right: 10px;
         }
+    }
+}
+
+div.audio_player {
+    background: lighten($gray, 40%);
+    height: 40px;
+    max-width: 400px;
+    margin-left: 40px;
+    div.play_btn {
+        margin-left: -40px;
+        cursor: pointer;
+        background: $blue;
+        width: 40px;
+        padding: 5px 8px 8px;
+        height: 40px;
+        font-size: 24px;
+        color: white;
+        display: inline-block;
+    }
+    .progress_bar {
+        display: inline-block;
+        background: lighten($gray, 25%);
+        height: 100%;
+        width: 0%;
+        vertical-align: top;
+    }
+    .play {
+        width: 100%;
+    }
+    .duration {
+        float: right;
+        color: $blue;
+        font-weight: 500;
+        height: 40px;
+        padding: 8px 30px 8px;
+        text-align: right;
+        font-size: 14px;
     }
 }
 

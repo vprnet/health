@@ -111,8 +111,7 @@ body {
     #above_fold div.top_story .byline, #above_fold div.top_story .dateline {
       color: #75787b; }
     #above_fold div.top_story div.landscape_img img {
-      margin: 0 auto 30px;
-      width: 100%; }
+      margin: 0 auto 30px; }
     #above_fold div.top_story .story_text {
       font-size: 18px;
       font-weight: 300; }
@@ -130,18 +129,19 @@ body {
   #above_fold #right_panel #about_page p {
     font-size: 18px;
     font-weight: 300; }
-  #above_fold #right_panel #reporters img {
-    border: 3px solid #a9abad; }
-  #above_fold #right_panel #reporters h4 {
-    margin-bottom: 0; }
-  #above_fold #right_panel #reporters a.twitter_handle {
-    font-weight: 500;
-    text-decoration: none;
-    border-bottom: 2px solid #e6e6e6;
-    color: #75787b; }
-    #above_fold #right_panel #reporters a.twitter_handle:hover {
-      border-color: #b3b3b3;
-      color: #5c5e61; }
+  #above_fold #right_panel #reporters {
+    padding-left: 30px; }
+    #above_fold #right_panel #reporters h4 {
+      margin-bottom: 0;
+      font-size: 20px; }
+    #above_fold #right_panel #reporters a.twitter_handle {
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 2px solid #e6e6e6;
+      color: #75787b; }
+      #above_fold #right_panel #reporters a.twitter_handle:hover {
+        border-color: #b3b3b3;
+        color: #5c5e61; }
   #above_fold #right_panel #google-ad {
     background: white;
     border: 1px solid #dddedf;
@@ -264,6 +264,38 @@ footer {
     max-height: 80px; }
     #river .story_image img {
       margin-right: 10px; }
+
+div.audio_player {
+  background: #dddedf;
+  height: 40px;
+  max-width: 400px;
+  margin-left: 40px; }
+  div.audio_player div.play_btn {
+    margin-left: -40px;
+    cursor: pointer;
+    background: #307fe2;
+    width: 40px;
+    padding: 5px 8px 8px;
+    height: 40px;
+    font-size: 24px;
+    color: white;
+    display: inline-block; }
+  div.audio_player .progress_bar {
+    display: inline-block;
+    background: #b6b8ba;
+    height: 100%;
+    width: 0%;
+    vertical-align: top; }
+  div.audio_player .play {
+    width: 100%; }
+  div.audio_player .duration {
+    float: right;
+    color: #307fe2;
+    font-weight: 500;
+    height: 40px;
+    padding: 8px 30px 8px;
+    text-align: right;
+    font-size: 14px; }
 
 #resources {
   padding: 20px 0 40px; }

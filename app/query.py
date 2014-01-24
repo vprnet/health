@@ -11,7 +11,7 @@ from cStringIO import StringIO
 from config import NPR_API_KEY
 
 
-def api_feed(tag, numResults=1, char_limit=200, thumbnail=False):
+def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
     """Query the NPR API using given tag ID, return dictionary of results"""
 
     stories = query_api(tag, numResults)
@@ -35,6 +35,14 @@ def api_feed(tag, numResults=1, char_limit=200, thumbnail=False):
         except KeyError:
             image = False  # set equal to url string for default image
             landscape = False
+
+        try:
+            audio = {}
+            audio_file = story['audio'][0]
+            audio['mp3'] = audio_file['format']['mp3'][0]['$text'].split('?')[0]
+            audio['duration'] = audio_file['duration']['$text']
+        except KeyError:
+            audio = False
 
         full_text = [i['$text'] for i in story['text']['paragraph'] if len(i) > 1]
         # if len(i) > 1 ignores pars w/ no text, i.e. when images or audio
@@ -62,6 +70,7 @@ def api_feed(tag, numResults=1, char_limit=200, thumbnail=False):
             'image': image,
             'text': text,
             'byline': byline,
+            'audio': audio,
             'landscape': landscape
         })
 
@@ -115,7 +124,7 @@ def query_api(tag, numResults=10):
 
     id_string = ','.join([str(s) for s in tag])
     query = ('http://api.npr.org/query?orgid=692' +
-        '&fields=title,byline,storyDate,image,text' +
+        '&fields=title,byline,storyDate,image,text,audio' +
         '&sort=dateDesc' +
         '&action=Or' +
         '&output=JSON' +
