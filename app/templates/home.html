@@ -41,7 +41,7 @@
                                         <a class="audio_play"><audio src="{{ story.audio.mp3 }}" type="audio/mpeg"></audio>
                                             <div class="play_btn">
                                                 <span class="glyphicon glyphicon-play"></span>
-                                            </div></a><div class="progress_bar" data="{{ story.audio.duration }}"></div>
+                                            </div></a><div class="progress_bar" data="{{ story.audio.duration }}" remaining="{{ story.audio.duration }}"></div>
                                             <span class="duration">{{ story.audio.duration }}</span>
                                         </div>
                                     </div>
