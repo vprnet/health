@@ -4,12 +4,20 @@ from flask import Flask
 import sys
 from flask_frozen import Freezer
 from upload_s3 import set_metadata
-from config import PROJECT_ROOT
+from config import AWS_DIRECTORY
 
 app = Flask(__name__)
 app.config.from_object('config')
 
 from views import *
+
+if len(sys.argv) > 1:
+    if sys.argv[1] == 'build':
+        PROJECT_ROOT = '/' + AWS_DIRECTORY
+    elif sys.argv[1] == 'test':
+        PROJECT_ROOT = '/www.vpr.net/' + AWS_DIRECTORY
+else:
+    PROJECT_ROOT = '/'
 
 
 class WebFactionMiddleware(object):

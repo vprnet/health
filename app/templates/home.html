@@ -40,7 +40,7 @@
                             {% for reporter in reporters %}
                                 <div class="reporter row">
                                     <div class="col-xs-4">
-                                        <img class="img-responsive img-circle" src="{{ reporter.url }}" alt="Photo of {{ reporter.name }}">
+                                        <img class="img-responsive img-circle" src="{{ page_url }}{{ reporter.url }}" alt="Photo of {{ reporter.name }}">
                                     </div>
                                     <div class="col-xs-7">
                                         <h4>{{ reporter.name }}</h4>
