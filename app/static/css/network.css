@@ -36,12 +36,20 @@ footer {
   margin-top: 20px;
   float: right; }
 
-#underwriter-nav {
-  font-size: 12px;
-  padding-left: 0;
-  margin-top: 3px; }
-  #underwriter-nav li {
-    display: inline; }
+#google-ad {
+  max-width: 300px;
+  margin: 0 auto;
+  min-height: 300px; }
+  #google-ad #underwriter-nav {
+    font-size: 12px;
+    padding-left: 0;
+    margin-top: 3px;
+    text-align: center; }
+    #google-ad #underwriter-nav li {
+      display: inline; }
+  @media (max-width: 330px) {
+    #google-ad {
+      margin-left: -5px; } }
 
 #social-logos {
   display: inline;

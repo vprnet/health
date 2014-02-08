@@ -8,7 +8,7 @@ import os
 from bs4 import BeautifulSoup as Soup
 from datetime import datetime
 from cStringIO import StringIO
-from config import NPR_API_KEY
+from config import NPR_API_KEY, ABSOLUTE_PATH
 
 
 def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
@@ -59,7 +59,7 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
         if thumbnail:
             try:
                 image_url = story['image'][0]['crop'][0]['src']
-                image = generate_thumbnail(image_url, size=(100, 100))
+                image = generate_thumbnail(image_url, preserve_ratio=True, size=(670, 100))
             except KeyError:
                 image = False
 
@@ -156,17 +156,22 @@ def reporter_image(url):
     return thumbnail
 
 
-def generate_thumbnail(image_url, size=(220, 165)):
+def generate_thumbnail(image_url, preserve_ratio=False, size=(220, 165)):
     """Take an image src, generate a thumbnail, return new path"""
 
     filename = image_url.rsplit('/', 1)[1]
     path_to_read = 'static/img/thumbnails/' + filename
-    path_to_save = 'app/' + path_to_read
+    path_to_save = ABSOLUTE_PATH + path_to_read
 
     if not os.path.isfile(path_to_save):
         img_file = urllib.urlopen(image_url)
         img = StringIO(img_file.read())
         image = Image.open(img)
+        if preserve_ratio:
+            width = image.size[0]
+            height = image.size[1]
+            new_height = size[0] * height / width
+            size = (size[0], new_height)
         im = ImageOps.fit(image, size, Image.ANTIALIAS)
         im.save(path_to_save)
 

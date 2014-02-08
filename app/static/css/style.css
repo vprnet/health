@@ -36,12 +36,20 @@ footer {
   margin-top: 20px;
   float: right; }
 
-#underwriter-nav {
-  font-size: 12px;
-  padding-left: 0;
-  margin-top: 3px; }
-  #underwriter-nav li {
-    display: inline; }
+#google-ad {
+  max-width: 300px;
+  margin: 0 auto;
+  min-height: 300px; }
+  #google-ad #underwriter-nav {
+    font-size: 12px;
+    padding-left: 0;
+    margin-top: 3px;
+    text-align: center; }
+    #google-ad #underwriter-nav li {
+      display: inline; }
+  @media (max-width: 330px) {
+    #google-ad {
+      margin-left: -5px; } }
 
 #social-logos {
   display: inline;
@@ -90,6 +98,14 @@ body {
 #above_fold {
   background: #eaebeb;
   padding: 20px 0 40px; }
+  #above_fold #mobile_h1 {
+    color: white;
+    text-align: center; }
+    #above_fold #mobile_h1 h1 {
+      background: #468de5;
+      font-size: 22px;
+      padding: 10px 0;
+      margin-top: 0; }
   #above_fold div.top_story {
     background: white;
     border: 1px solid #dddedf;
@@ -115,54 +131,67 @@ body {
     #above_fold div.top_story .story_text {
       font-size: 18px;
       font-weight: 300; }
+    @media (max-width: 1000px) {
+      #above_fold div.top_story {
+        margin: 15px 0; } }
+    @media (max-width: 500px) {
+      #above_fold div.top_story h3 {
+        font-size: 18px; }
+      #above_fold div.top_story p {
+        font-size: 14px; }
+      #above_fold div.top_story .byline, #above_fold div.top_story .dateline {
+        font-size: 12px; }
+      #above_fold div.top_story .audio_title {
+        display: none; }
+      #above_fold div.top_story #right_panel p {
+        font-size: 14px; } }
+  #above_fold div.audio_player {
+    margin-top: 15px;
+    margin-bottom: 20px; }
+  #above_fold #right_panel img {
+    margin: 0 auto; }
+  #above_fold #right_panel h3 {
+    background: #468de5;
+    margin-top: 0;
+    padding: 15px 0;
+    color: white;
+    text-align: center; }
+  #above_fold #right_panel div.content_box {
+    padding: 15px; }
   #above_fold #right_panel #reporters, #above_fold #right_panel #about_page {
     margin-bottom: 15px;
     background: white;
-    padding: 30px 20px;
     border: 1px solid #dddedf; }
-    #above_fold #right_panel #reporters h3, #above_fold #right_panel #about_page h3 {
-      margin: 0 0 30px;
-      font-size: 32px;
-      text-align: center; }
     #above_fold #right_panel #reporters div.reporter, #above_fold #right_panel #about_page div.reporter {
       margin-top: 10px; }
   #above_fold #right_panel #about_page p {
     font-size: 18px;
     font-weight: 300; }
-  #above_fold #right_panel #reporters {
-    padding-left: 30px; }
-    #above_fold #right_panel #reporters h4 {
-      margin-bottom: 0;
-      font-size: 20px; }
-    #above_fold #right_panel #reporters a.twitter_handle {
-      font-weight: 500;
-      text-decoration: none;
-      border-bottom: 2px solid #e6e6e6;
-      color: #75787b; }
-      #above_fold #right_panel #reporters a.twitter_handle:hover {
-        border-color: #b3b3b3;
-        color: #5c5e61; }
-  #above_fold #right_panel #google-ad {
-    background: white;
-    border: 1px solid #dddedf;
-    padding: 30px 20px; }
-    #above_fold #right_panel #google-ad #uw_container {
-      max-width: 300px;
-      margin: 0 auto;
-      text-align: center; }
+  #above_fold #right_panel #reporters h4 {
+    margin-bottom: 0;
+    font-size: 20px; }
+  #above_fold #right_panel #reporters a.twitter_handle {
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 2px solid #e6e6e6;
+    color: #75787b; }
+    #above_fold #right_panel #reporters a.twitter_handle:hover {
+      border-color: #b3b3b3;
+      color: #5c5e61; }
+  @media (max-width: 1200px) and (min-width: 1000px) {
+    #above_fold #right_panel #google-ad {
+      margin-left: -5px; } }
+  @media (max-width: 500px) {
+    #above_fold #right_panel p {
+      font-size: 14px !important; } }
 
 .featured {
   background: white;
-  padding: 20px;
   border: 1px solid #dddedf;
-  margin-bottom: 15px;
-  color: #3f4444; }
-  .featured h3 {
-    font-size: 32px;
-    text-align: center;
-    margin-bottom: 30px; }
+  margin-bottom: 15px; }
 
 #follow #slideshow {
+  display: none;
   position: relative; }
   #follow #slideshow i.icon {
     font-size: 22px;
@@ -175,14 +204,19 @@ body {
     float: right; }
   #follow #slideshow #circle_progress i.icon {
     font-size: 16px; }
+#follow .audio_player .audio_title, #follow .audio_player .duration {
+  padding: 10px;
+  font-size: 12px; }
+@media (max-width: 1200px) and (min-width: 1000px), (max-width: 500px) {
+  #follow .audio_player .audio_title {
+    display: none; } }
 
 #follow h3 a, #hood h3 a {
   text-decoration: none;
-  border-bottom: 2px solid #e6e6e6;
-  color: #585e5e; }
+  border-bottom: 2px solid #73a8eb;
+  color: white; }
   #follow h3 a:hover, #hood h3 a:hover {
-    border-color: #b3b3b3;
-    color: #3f4444; }
+    border-color: #cde0f8; }
 #follow p, #hood p {
   font-size: 16px;
   font-weight: 300;
@@ -202,11 +236,11 @@ body {
   font-size: 16px;
   font-weight: 400;
   color: #75787b; }
-#follow .file, #hood .file {
-  margin-left: 30px; }
 #follow #listen, #hood #listen {
-  font-size: 16px;
-  font-weight: 400; }
+  margin-top: 0px; }
+
+#hood i {
+  margin-right: 10px; }
 
 footer {
   font-size: 10px;
@@ -217,7 +251,6 @@ footer {
     font-size: 32px !important; } }
 #river {
   background: white;
-  border-top: 5px solid #c3c5c6;
   padding: 30px 0; }
   #river h2 {
     text-align: center;
@@ -238,7 +271,7 @@ footer {
     line-height: 1.4em; }
     @media (max-width: 768px) {
       #river h3.title {
-        font-size: 18px; } }
+        font-size: 16px; } }
   #river .story-box {
     margin-top: 30px; }
   #river .dateline, #river .byline {
@@ -252,9 +285,6 @@ footer {
     text-align: right;
     font-size: 20px;
     font-weight: 300; }
-    @media (max-width: 768px) {
-      #river #more_stories {
-        font-size: 18px; } }
   #river .story_text {
     margin-top: 20px;
     font-weight: 300;
@@ -264,38 +294,16 @@ footer {
     max-height: 80px; }
     #river .story_image img {
       margin-right: 10px; }
-
-div.audio_player {
-  background: #dddedf;
-  height: 40px;
-  max-width: 400px;
-  margin-left: 40px; }
-  div.audio_player div.play_btn {
-    margin-left: -40px;
-    cursor: pointer;
-    background: #307fe2;
-    width: 40px;
-    padding: 5px 8px 8px;
-    height: 40px;
-    font-size: 24px;
-    color: white;
-    display: inline-block; }
-  div.audio_player .progress_bar {
-    display: inline-block;
-    background: #b6b8ba;
-    height: 100%;
-    width: 0%;
-    vertical-align: top; }
-  div.audio_player .play {
-    width: 100%; }
-  div.audio_player .duration {
-    float: right;
-    color: #307fe2;
-    font-weight: 500;
-    height: 40px;
-    padding: 8px 30px 8px;
-    text-align: right;
-    font-size: 14px; }
+  @media (max-width: 768px) {
+    #river h3.title {
+      font-size: 16px; }
+    #river .story_text, #river .dateline {
+      font-size: 14px; }
+    #river .byline {
+      font-size: 10px; }
+    #river #more_stories {
+      padding-right: 10px;
+      font-size: 16px; } }
 
 #resources {
   padding: 20px 0 40px; }
@@ -2500,3 +2508,45 @@ div.audio_player {
 
 .ion-xbox:before {
   content: "\f30c"; }
+
+div.audio_player {
+  background: #dddedf;
+  height: 40px;
+  margin-left: 40px;
+  max-width: 500px;
+  position: relative; }
+  div.audio_player div.play_btn {
+    margin-left: -40px;
+    cursor: pointer;
+    background: #307fe2;
+    width: 40px;
+    padding: 5px 8px 8px;
+    height: 40px;
+    font-size: 24px;
+    color: white;
+    display: inline-block; }
+  div.audio_player .progress_bar {
+    display: inline-block;
+    background: #b6b8ba;
+    height: 100%;
+    width: 0%;
+    vertical-align: top; }
+  div.audio_player .play {
+    width: 100%; }
+  div.audio_player .duration, div.audio_player .audio_title {
+    position: absolute;
+    top: 2px;
+    color: #307fe2;
+    font-weight: 500;
+    height: 40px;
+    padding: 8px 30px 8px;
+    text-align: right;
+    font-size: 14px; }
+    @media (max-width: 400px) {
+      div.audio_player .duration, div.audio_player .audio_title {
+        font-size: 10px;
+        padding: 10px 25px 8px; } }
+  div.audio_player .duration {
+    right: 10px; }
+  div.audio_player .audio_title {
+    left: 0; }

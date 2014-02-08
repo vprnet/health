@@ -56,12 +56,21 @@ footer {
     float: right;
 }
 
-#underwriter-nav {
-    font-size: 12px;
-    padding-left: 0;
-    margin-top: 3px;
-    li {
-        display: inline
+#google-ad {
+    max-width: 300px;
+    margin: 0 auto;
+    min-height: 300px;
+    #underwriter-nav {
+        font-size: 12px;
+        padding-left: 0;
+        margin-top: 3px;
+        text-align: center;
+        li {
+            display: inline
+        }
+    }
+    @media (max-width: 330px) {
+        margin-left: -5px;
     }
 }
 
