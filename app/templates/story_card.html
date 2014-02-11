@@ -1,5 +1,5 @@
 {% import "macros.html" as macros %}
-            {% for story in most_recent %}
+            {% for story in stories %}
                 <div class="row top_story">
                     <div class="col-xs-12">
                     {% if story.image and story.landscape %}
@@ -9,7 +9,12 @@
                     {% endif %}
                     <p class="dateline">{{ story.date }}</p>
                     <h3 class="title"><a href="{{ story.link }}">{{ story.title }}</a></h3>
-                    <p class="byline">By {{ story.byline|upper }}</p>
+                    <p class="byline">
+                    {% if story.byline.url %}
+                        By <a href="{{ story.byline.url }}" alt="{{ story.byline.name }} bio">{{ story.byline.name|upper }}</a>
+                    {% else %}
+                    By {{ story.byline.name|upper }}
+                    {% endif %}</p>
                     <div class="row story_text">
                         {% if story.image and not story.landscape %}
                         <div class="col-sm-4 vertical_img">
@@ -33,3 +38,10 @@
                     </div>
                 </div>
             {% endfor %}
+                <a id="archive_link" href="http://digital.vpr.net/topic/health-care" alt="Click here for more health care reporting">
+                <div class="row top_story" id="archive">
+                    <div class="col-xs-12">
+                        <p><span>More Health Care Reporting</span></p>
+                    </div>
+                </div>
+                </a>

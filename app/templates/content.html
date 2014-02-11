@@ -1,28 +1,117 @@
 {% extends "base.html" %}
+{% import "macros.html" as macros %}
 
-{% block title %}VPR: App Template{% endblock %}
-{% block description %}This is the VPR app template. We use it to generate HTML locally and then push it to S3. Cheap, easy, and indestructible!{% endblock %}
+{% block title %}VPR's Coverage of Health Care in Vermont{% endblock %}
 
-{% block header_title %}VPR App Template{% endblock %}
+{% block header_title %}Health Care In Vermont{% endblock %}
+
 {% block content %}
+<div id="above_fold">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div id="mobile_h1" class="visible-xs col-xs-12">
+                        <h1 class="testing">Health Care In Vermont</h1>
+                    </div>
+                </div>
+            {% include "story_card.html" %}
+            </div>
+            <div id="right_panel" class="col-md-4">
+                <div class="row">
+                    <div class="col-md-12 col-sm-6">
+                        <div id="about_page">
+                            <h3>Health Care</h3>
+                            <div class="content_box">
+                                <p>HSA, HRA and the ACA. Platinum, Gold, Silver and Bronze. Vermont Health Connect. Single Payer.</p>
+                                <p>There's a lot to keep track of these days surrounding healthcare. VPR reports the latest news and helps explain what it all means to you.</p>
+                            </div>
+                <div id="google-ad" class="underwriter">
+                    <div id="uw_container">
+                    <section><!-- VPR-Sitewide-UW-1-300x250 --> <div id='div-gpt-ad-1365016583819-0' style='width:300px; height:250px;'> <script type='text/javascript'> googletag.cmd.push(function() { googletag.display('div-gpt-ad-1365016583819-0'); }); </script> </div> <nav> <ul id="underwriter-nav"> <li><a href="http://www.vpr.net/apps/underwriter-directory/index">Find An Underwriter</a></li> -- <li><a href="http://www.vpr.net/support/business_underwriting/">Become An Underwriter</a></li> </ul> </nav></section>
+                    </div>
+                </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-6">
+                        <div id="reporters">
+                            <h3>On The Beat</h3>
+                            <div class="content_box">
+                            {% for reporter in reporters %}
+                                <div class="reporter row">
+                                    <div class="col-xs-4">
+                                        <img class="img-responsive img-circle" src="{{ page_url }}{{ reporter.url }}" alt="Photo of {{ reporter.name }}">
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <h4>{{ reporter.name }}</h4>
+                                        {% if reporter.handle %}
+                                        <a class="twitter_handle" href="http://twitter.com/{{ reporter.handle }}" alt="Twitter account for {{ reporter.name }}">@{{ reporter.handle }}</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-<div class="jumbotron" style="margin-top: 25px;">
-    <h1>VPR Template</h1>
-    <p>This page was built using the VPR App Template, which is open sourced and available on <a href="https://github.com/vprnet/app-template">github</a>. Read on below to find out more about the template and how we use it for our projects.</p>
-    <p><a class="btn btn-large btn-primary" href="https://github.com/vprnet/app-template#vpr-project-skeleton">View Template Docs &raquo;</a></p>
+                <div class="row">
+                    <div class="col-md-12 col-sm-6">
+                        <div class="featured" id="follow">
+                            <h3><a href="http://digital.vpr.net/post/following-money-vermont-health-connect" alt="Follow The Money">Follow The Money</a></h3>
+                            <div class="content_box">
+                                <img class="img-responsive" src="http://mediad.publicbroadcasting.net/p/vpr/files/styles/placed_wide/public/201312/26-million.png" alt="CGI overruns have cost Vermont $26 million">
+                                <div id="slideshow">
+                                    <div id="chevron_nav"><i class="icon ion-chevron-left inactive"></i><i class="icon ion-chevron-right"></i></div>
+                                    <div id="circle_progress"><i class="icon ion-ios7-circle-filled"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i></div>
+                                </div>
+                                {% for paragraph in follow.text %}
+                                <p>{{ paragraph }}</p>
+                                {% endfor %}
+                                {{ macros.player("http://cpa.ds.npr.org/vpr/audio/2013/12/vpr-news-health-money-20131218.mp3", 468, "Listen To Follow The Money") }}
+                                <p id="listen"><span class="file glyphicon glyphicon-file"></span> <a href="http://digital.vpr.net/post/following-money-vermont-health-connect">Read the Article</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="col-md-12 col-sm-6">
+                    <div class="featured hidden-xs" id="hood">
+                        <h3><a href="http://www.vpr.net/apps/health/network">Under The Hood</a></h3>
+                        <div class="content_box">
+                            <p id="no_mobile" class="visible-xs">Not mobile optimized</p>
+                            <a href="http://www.vpr.net/apps/health/network"><img class="img-responsive" src="{{ url_for('static', filename='img/hood.png') }}"></a>
+                            <p>Explore <a href="http://www.vpr.net/apps/health/network">our interactive guide</a> of <a href="http://healtchconnect.vermont.gov">Vermont Health Connect</a>, the state's web portal for the healthcare exchange.</p>
+                            <p>This interative visualization will take you on a step by step tour through the system that users interact with to choose and&mdash;eventually&mdash;pay for the new insurance products available due to the Affordable Care Act.</p>
+                            <p><i class="icon ion-android-share"></i><a href="{{ url_for('network') }}" alt="Under the Hood of Vermont Health Connect">View the App</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="resources">
+                        <h3>Health Care Resources</h3>
+                        <div class="row content_box">
+                            <div class="col-md-12 col-sm-6">
+                                <p><a href="https://healthconnect.vermont.gov/">Vermont Health Connect</a></p>
+                                <p><a href="http://info.healthconnect.vermont.gov/">Help Center</a></p>
+                            </div>
+                            <div class="col-md-12 col-sm-6">
+                                <p><a href="http://info.healthconnect.vermont.gov/tax_credit_calculator">Subsidy Calculator</a></p>
+                                <p><a href="http://info.healthconnect.vermont.gov/assister-map?field_county_tid=All&field_navigator_type_tid=574">Find A Navigator</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<h2 style="padding-left: 60px;">Develop in Python</h2>
-<p style="padding: 10px 60px 30px; font-size: 20px; font-weight: 300;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<h2 style="padding-left: 60px;">Hack in Flask</h2>
-<p style="padding: 10px 60px 30px; font-size: 20px; font-weight: 300;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<h2 style="padding-left: 60px;">Bootstrap? Bootstrap!</h2>
-<p style="padding: 10px 60px 30px; font-size: 20px; font-weight: 300;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<h2 style="padding-left: 60px;">Flat Files on S3: Fast, Cheap, and Resilient</h2>
-<p style="padding: 10px 60px 30px; font-size: 20px; font-weight: 300;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 {% endblock %}
 
+
 {% block scripts %}
-<script src="{{ url_for('static', filename='js/svg-support.js') }}"></script>
-<!-- Jquery and bootstrap.js not included by default -->
+<script src="{{ url_for('static', filename='js/script-ck.js') }}"></script>
 {% endblock %}

@@ -8,9 +8,7 @@ from config import BASE_URL
 def index():
     page_url = BASE_URL + request.path
     page_title = 'Health Care In Vermont'
-    stories = api_feed([245948266, 186100276], numResults=10)
-    most_recent = stories[:4]
-    stories = stories[4:]
+    stories = api_feed([245948266, 186100276], numResults=8, thumbnail=True)
     reporters = reporter_list([245948266, 186100276])
     follow_the_money = api_feed([255414453])[0]
 
@@ -23,9 +21,8 @@ def index():
         'twitter_hashtag': 'VTpoli'
     }
 
-    return render_template('home.html',
+    return render_template('content.html',
         page_title=page_title,
-        most_recent=most_recent,
         stories=stories,
         social=social,
         page_url=page_url,

@@ -39,12 +39,12 @@ body {
     }
     #navbar-title {
         color: darken(white, 5%);
-        font-size: 22px;
-        font-weight: 300;
+        font-size: 26px;
+        font-weight: 400;
         display: inline;
         position: relative;
-        top: 8px;
-        left: 10px;
+        top: 6px;
+        left: 15px;
         @media (max-width: $tablet) {
             display: none;
         }

@@ -25,7 +25,7 @@
 }
 
 body {
-    background: black;
+    background: lighten($gray, 45%);
     .navbar {
         border-color: darken($green, 5%);
         h1#navbar-title {
@@ -35,7 +35,6 @@ body {
 }
 
 #above_fold {
-    background: lighten($gray, 45%);
     padding: 20px 0 40px;
     #mobile_h1 {
         color: white;
@@ -104,6 +103,26 @@ body {
             }
         }
     }
+    #archive_link {
+        text-decoration: none;
+    }
+    #archive {
+        background: lighten($red, 10%);
+        padding: 10px;
+        p {
+            text-align: center;
+            font-size: 24px;
+            color: white;
+        }
+        span {
+            border-bottom: 3px solid lighten($red, 20%);
+        }
+        &:hover {
+            span {
+                border-color: lighten($red, 40%);
+            }
+        }
+    }
     div.audio_player {
         margin-top: 15px;
         margin-bottom: 20px;
@@ -122,7 +141,7 @@ body {
         div.content_box {
             padding: 15px;
         }
-        #reporters, #about_page {
+        #reporters, #about_page, #resources {
             margin-bottom: 15px;
             background: white;
             border: 1px solid lighten($gray, 40%);
@@ -201,7 +220,7 @@ body {
     }
 }
 
-#follow, #hood {
+#follow, #hood, #resources {
     h3 {
         a {
             @include dk-link(lighten($blue, 5%), white, 2px);
@@ -228,6 +247,18 @@ body {
     #listen {
         margin-top: 0px;
     }
+}
+
+#resources {
+    p {
+        text-align: center;
+    }
+    @media (min-width: 1000px) {
+        p {
+            margin-bottom: 0;
+        }
+    }
+    padding-bottom: 20px;
 }
 
 #hood {
@@ -316,31 +347,6 @@ footer {
         #more_stories {
             padding-right: 10px;
             font-size: 16px;
-        }
-    }
-}
-
-#resources {
-    padding: 20px 0 40px;
-    h2 {
-        font-size: 62px;
-        font-weight: 300;
-        text-align: center;
-        color: lighten($gray, 40%);
-        margin-bottom: 30px;
-    }
-    p {
-        text-align: center;
-        font-size: 18px;
-        color: lighten($gray, 40%);
-        a {
-            color: lighten($gray, 30%);
-            border-bottom: 2px solid darken($gray, 25%);
-            &:hover {
-                text-decoration: none;
-                border-color: white;
-                color: white;
-            }
         }
     }
 }

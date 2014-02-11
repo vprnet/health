@@ -21,17 +21,23 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
         link = story['link'][0]['$text']
         date = convert_date(story['storyDate']['$text'])
         title = story['title']['$text'].strip()
-        byline = story['byline'][0]['name']['$text']
+        byline = {}
+        byline['name'] = story['byline'][0]['name']['$text']
+        byline['url'] = story['byline'][0]['link'][0]['$text']
 
-        try:
+        try:  # if there's an image, determine orientation and define boundary
             story_image = story['image'][0]['crop'][0]
             image = story_image['src']
-            width = story_image['width']
-            height = story_image['height']
+            width = int(story_image['width'])
+            height = int(story_image['height'])
             if int(width) > int(height):
                 landscape = True
+                if width > 728:  # biggest size for landscape photos
+                    width = 728
             else:
                 landscape = False
+                if width > 223:  # biggest size for portrait photos
+                    width = 223
         except KeyError:
             image = False  # set equal to url string for default image
             landscape = False
@@ -59,7 +65,7 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
         if thumbnail:
             try:
                 image_url = story['image'][0]['crop'][0]['src']
-                image = generate_thumbnail(image_url, preserve_ratio=True, size=(670, 100))
+                image = generate_thumbnail(image_url, preserve_ratio=True, size=(width, height))
             except KeyError:
                 image = False
 
