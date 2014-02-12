@@ -15,7 +15,7 @@ def index():
     social = {
         'title': "VPR: Healthcare Coverage 2014",
         'subtitle': 'www.vpr.net/apps/health/',
-        'img': 'http://mediad.publicbroadcasting.net/p/vpr/files/201401/statehouse-january.jpg',
+        'img': 'http://www.vpr.net/apps/health/static/img/under_the_hood_share_photo_vpr.png',
         'description': "VPR's guide to health care in Vermont. Includes coverage of the health care exchange, the latest in state policy and implementation of a single payer system in Vermont.",
         'twitter_text': "VPR's guide to healthcare in VT. Latest coverage, exchange updates and the road to single payer",
         'twitter_hashtag': 'VTpoli'

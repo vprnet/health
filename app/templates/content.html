@@ -43,7 +43,7 @@
                                         <img class="img-responsive img-circle" src="{{ url_for('static', filename=reporter.image_src) }}" alt="Photo of {{ reporter.name }}">
                                     </div>
                                     <div class="col-xs-7">
-                                        <h4><a href="{{ reporter }}" alt="All {{ reporter.name }} stories">{{ reporter.name }}</a></h4>
+                                        <h4><a href="{{ reporter.url }}" alt="All {{ reporter.name }} stories">{{ reporter.name }}</a></h4>
                                         {% if reporter.handle %}
                                         <a class="twitter_handle" href="http://twitter.com/{{ reporter.handle }}" alt="Twitter account for {{ reporter.name }}">@{{ reporter.handle }}</a>
                                         {% endif %}
