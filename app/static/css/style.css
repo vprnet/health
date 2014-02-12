@@ -157,6 +157,9 @@ body {
       border-bottom: 3px solid #ee9d91; }
     #above_fold #archive:hover span {
       border-color: #fcece9; }
+    @media (max-width: 1000px) {
+      #above_fold #archive {
+        margin: 20px 0 40px; } }
   #above_fold div.audio_player {
     margin-top: 15px;
     margin-bottom: 20px; }
@@ -180,8 +183,15 @@ body {
     font-size: 18px;
     font-weight: 300; }
   #above_fold #right_panel #reporters h4 {
-    margin-bottom: 0;
-    font-size: 20px; }
+    margin: 20px 0 2px;
+    font-size: 18px; }
+    #above_fold #right_panel #reporters h4 a {
+      text-decoration: none;
+      border-bottom: 2px solid #e6e6e6;
+      color: #585e5e; }
+      #above_fold #right_panel #reporters h4 a:hover {
+        border-color: #b3b3b3;
+        color: #3f4444; }
   #above_fold #right_panel #reporters a.twitter_handle {
     font-weight: 500;
     text-decoration: none;

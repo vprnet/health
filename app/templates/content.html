@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% import "macros.html" as macros %}
 
-{% block title %}VPR's Coverage of Health Care in Vermont{% endblock %}
+{% block title %}Health Care in Vermont | VPR News{% endblock %}
 
 {% block header_title %}Health Care In Vermont{% endblock %}
 
@@ -23,8 +23,8 @@
                         <div id="about_page">
                             <h3>Health Care</h3>
                             <div class="content_box">
-                                <p>HSA, HRA and the ACA. Platinum, Gold, Silver and Bronze. Vermont Health Connect. Single Payer.</p>
-                                <p>There's a lot to keep track of these days surrounding healthcare. VPR reports the latest news and helps explain what it all means to you.</p>
+                                <p>HSA, HRA and the ACA. Platinum, Gold, Silver and Bronze. Vermont Health Connect and Single Payer.</p>
+                                <p>VPR's continuing coverage of health care in Vermont brings you the latest news and explains what it all means to you.</p>
                             </div>
                 <div id="google-ad" class="underwriter">
                     <div id="uw_container">
@@ -40,10 +40,10 @@
                             {% for reporter in reporters %}
                                 <div class="reporter row">
                                     <div class="col-xs-4">
-                                        <img class="img-responsive img-circle" src="{{ page_url }}{{ reporter.url }}" alt="Photo of {{ reporter.name }}">
+                                        <img class="img-responsive img-circle" src="{{ url_for('static', filename=reporter.image_src) }}" alt="Photo of {{ reporter.name }}">
                                     </div>
                                     <div class="col-xs-7">
-                                        <h4>{{ reporter.name }}</h4>
+                                        <h4><a href="{{ reporter }}" alt="All {{ reporter.name }} stories">{{ reporter.name }}</a></h4>
                                         {% if reporter.handle %}
                                         <a class="twitter_handle" href="http://twitter.com/{{ reporter.handle }}" alt="Twitter account for {{ reporter.name }}">@{{ reporter.handle }}</a>
                                         {% endif %}
@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div id="resources">
-                        <h3>Health Care Resources</h3>
+                        <h3>Health Connect Resources</h3>
                         <div class="row content_box">
                             <div class="col-md-12 col-sm-6">
                                 <p><a href="https://healthconnect.vermont.gov/">Vermont Health Connect</a></p>

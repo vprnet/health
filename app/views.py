@@ -8,7 +8,7 @@ from config import BASE_URL
 def index():
     page_url = BASE_URL + request.path
     page_title = 'Health Care In Vermont'
-    stories = api_feed([245948266, 186100276], numResults=8, thumbnail=True)
+    stories = api_feed([245948266, 186100276], numResults=10, thumbnail=True)
     reporters = reporter_list([245948266, 186100276])
     follow_the_money = api_feed([255414453])[0]
 
@@ -16,7 +16,7 @@ def index():
         'title': "VPR: Healthcare Coverage 2014",
         'subtitle': 'www.vpr.net/apps/health/',
         'img': 'http://mediad.publicbroadcasting.net/p/vpr/files/201401/statehouse-january.jpg',
-        'description': "VPR's guide to the healthcare in Vermont. Latest coverage, exchange updates and the road to single payer, all in one place.",
+        'description': "VPR's guide to health care in Vermont. Includes coverage of the health care exchange, the latest in state policy and implementation of a single payer system in Vermont.",
         'twitter_text': "VPR's guide to healthcare in VT. Latest coverage, exchange updates and the road to single payer",
         'twitter_hashtag': 'VTpoli'
     }

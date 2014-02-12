@@ -99,7 +99,8 @@ def reporter_list(tag, numResults=50):
             byline['name'] = name
             try:
                 url = story['byline'][0]['link'][0]['$text']
-                byline['url'] = reporter_image(url)
+                byline['url'] = url
+                byline['image_src'] = reporter_image(url)
                 byline['count'] = 1
                 reporters.append(byline)
             except KeyError:
@@ -119,7 +120,7 @@ def reporter_list(tag, numResults=50):
         for twitter in twitter_dict['reporters']:
             if reporter['name'] == twitter['name']:
                 reporter['handle'] = twitter['handle']
-        if reporter['url'] and reporter['count'] > 1:
+        if reporter['image_src'] and reporter['count'] > 1:
             ranked_list.append(reporter)
 
     return ranked_list
@@ -166,8 +167,8 @@ def generate_thumbnail(image_url, preserve_ratio=False, size=(220, 165)):
     """Take an image src, generate a thumbnail, return new path"""
 
     filename = image_url.rsplit('/', 1)[1]
-    path_to_read = 'static/img/thumbnails/' + filename
-    path_to_save = ABSOLUTE_PATH + path_to_read
+    path_to_read = 'img/thumbnails/' + filename
+    path_to_save = ABSOLUTE_PATH + 'static/' + path_to_read
 
     if not os.path.isfile(path_to_save):
         img_file = urllib.urlopen(image_url)

@@ -122,6 +122,9 @@ body {
                 border-color: lighten($red, 40%);
             }
         }
+        @media (max-width: 1000px) {
+            margin: 20px 0 40px;
+        }
     }
     div.audio_player {
         margin-top: 15px;
@@ -157,8 +160,11 @@ body {
         }
         #reporters {
             h4 {
-                margin-bottom: 0;
-                font-size: 20px;
+                margin: 20px 0 2px;
+                font-size: 18px;
+                a {
+                    @include lt-link(white, $black, 2px);
+                }
             }
             a.twitter_handle {
                 font-weight: 500;
