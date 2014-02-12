@@ -112,7 +112,7 @@ def reporter_list(tag, numResults=50):
 
     reporters = sorted(reporters, key=lambda k: k['count'], reverse=True)
 
-    with open('app/static/data/twitter.json') as f:
+    with open(ABSOLUTE_PATH + 'static/data/twitter.json') as f:
         twitter_dict = json.load(f)
 
     ranked_list = []
