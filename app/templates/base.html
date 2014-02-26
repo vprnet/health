@@ -4,7 +4,10 @@
     <meta charset="utf-8">
 
     <title>{% block title %}Vermont Public Radio{% endblock %}</title>
+    {% block viewport %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock %}
+
     <meta name="description" content="{% block description %}{{ social.description }}{% endblock %}">
     <meta name="author" content="Matthew Parrilla, VPR, @mattparrilla">
 

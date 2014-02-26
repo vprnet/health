@@ -1,5 +1,4 @@
 body {
-  padding-top: 45px;
   padding-bottom: 40px; }
 
 @media (max-width: 768px) {
@@ -15,7 +14,9 @@ body {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#56aa33), to(#4a922b));
   background-image: -webkit-linear-gradient(top, #56aa33, #4a922b);
   background-image: -o-linear-gradient(top, #56aa33, #4a922b);
-  min-height: 40px; }
+  min-height: 40px;
+  border-radius: 0;
+  border: 0; }
   .navbar .navbar-header {
     float: none; }
   .navbar a.navbar-brand {

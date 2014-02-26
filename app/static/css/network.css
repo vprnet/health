@@ -1,5 +1,4 @@
 body {
-  padding-top: 45px;
   padding-bottom: 40px; }
 
 @media (max-width: 768px) {
@@ -15,7 +14,9 @@ body {
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#56aa33), to(#4a922b));
   background-image: -webkit-linear-gradient(top, #56aa33, #4a922b);
   background-image: -o-linear-gradient(top, #56aa33, #4a922b);
-  min-height: 40px; }
+  min-height: 40px;
+  border-radius: 0;
+  border: 0; }
   .navbar .navbar-header {
     float: none; }
   .navbar a.navbar-brand {
@@ -246,7 +247,7 @@ ul#social {
   width: 100%;
   max-width: 875px;
   bottom: 0px;
-  background: #f7f8f8;
+  background: #eaebeb;
   margin-bottom: 10px;
   font-size: 12px; }
   #bottom-block #updated {
@@ -287,5 +288,5 @@ ul#social {
     #navigate a:hover {
       text-decoration: none; }
 
-#footer footer {
-  float: left; }
+footer {
+  float: none; }

@@ -204,7 +204,7 @@ ul#social {
     width: 100%;
     max-width: 875px;
     bottom: 0px;
-    background: lighten($ltGray, 10%);
+    background: lighten($ltGray, 5%);
     margin-bottom: 10px;
     font-size: 12px;
     #updated {
@@ -255,8 +255,6 @@ ul#social {
     }
 }
 
-#footer {
-    footer {
-        float: left;
-    }
+footer {
+    float: none;
 }
