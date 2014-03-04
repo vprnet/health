@@ -202,15 +202,16 @@ ul#social {
 #bottom-block {
     position: absolute;
     height: 90px;
-    width: 100%;
+    width: 850px;
     max-width: 875px;
+    left: 15px;
     bottom: 0px;
     background: lighten($ltGray, 5%);
     margin-bottom: 10px;
     font-size: 12px;
     #updated {
         position: absolute;
-        left: 585px;
+        right: 10px;
         font-style: italic;
         padding: 20px 10px;
         width: 285px;
