@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block style %}
-    <link href="{{ url_for('static', filename='css/network.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/network.css') }}?ver=2.0" rel="stylesheet">
 {% endblock %}
 
 {% block content %}
@@ -15,8 +15,8 @@
     <div id="explanation">
         <div class="active" id="par0">
             <h3>How To Use This Tool</h3>
-            <p>This site will take you through a visualization of Vermont Health Connect's system, Vermont's custom built version of the Healthcare Exchange.</p>
-            <p>To navigate the process and learn about the sticking points in the exchange, click on "Get Started" in the bottom right corner of this window.</p>
+            <p>This site will take you through a visualization of Vermont Health Connect, Vermont's custom built version of the Healthcare Exchange.</p>
+            <p>To navigate the process, click on "Get Started" in the bottom right corner of this window.</p>
         </div>
 
         <div class="inactive" id="par1">
@@ -45,30 +45,24 @@
         <div class="inactive" id="par5">
             <h3>Select Plan, Send Payment</h3>
             <p>Users then select a plan from the list of their coverage options. In order for coverage to begin, users need to pay a premium through the exchange.</p>
-            <p>Currently users are able to choose a plan&mdash;but not pay electronically.</p>
+            <p>As of March 3, 2014, users can pay the premium online.</p>
         </div>
 
         <div class="inactive" id="par6">
-        <h3>Payment System Unavailable</h3>
-            <p>While Vermont Health Connect's systems are working, the third party premium processing system isn't, so users can't pay for their insurance online.</p>
-            <p>Once the premium processor is up and running properly, the process can go on.</p>
+            <h3>Process Payment</h3>
+            <p>When the premium processor receives a payment, it sends back a confirmation to Vermont Health Connect that users have paid and can now be insured.</p>
         </div>
 
         <div class="inactive" id="par7">
-            <h3>Process Payment</h3>
-            <p>When the premium processor is able to receive a payment, it will send back a confirmation to Vermont Health Connect that users have paid and can now be insured.</p>
-        </div>
-
-        <div class="inactive" id="par8">
             <h3>Insurance Company Notified</h3>
             <p>With no additional action from users, Vermont Health Connect sends the users’ information to the coverage provider they’ve chosen along with confirmation that they’ve paid. Federal subsidies that users qualify for will be sent directly from the IRS to the coverage provider.</p>
         </div>
 
-        <div class="inactive" id="par9">
+        <div class="inactive" id="par8">
             <h3>Insurance Confirmed</h3>
             <p>Once the provider’s computers have processed the incoming information, they send Vermont Health Connect a confirmation that the user has enrolled. Coverage can then begin.
             </p>
-            <p><span class="bolder">The process is now complete.</span> The state expects approximately 75,000 people to complete this process before Jan. 1, 2014, when most plans will take effect.</p>
+            <p><span class="bolder">The process is now complete.</span></p>
         </div>
 
     </div>
@@ -98,7 +92,7 @@
         </div>
 
         <div id="updated">
-            <p>Updated November 4, 2013: The language of this tool was updated for clarity based on feedback from the Vermont Department of Health Access.</p>
+            <p>Updated March 4, 2014: This tool was updated to reflect the increased functionality of Vermont Health Connect.
         </div>
 
     </div>
@@ -125,5 +119,5 @@
 
 {% block scripts %}
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
-    <script src="{{ url_for('static', filename='js/connect3-ck.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/connect3-ck.js') }}?ver=2.0"></script>
 {% endblock %}

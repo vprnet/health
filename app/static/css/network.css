@@ -211,7 +211,8 @@ p.benaissance {
     margin: 0 0 5px;
     font-size: 22px; }
   #explanation span.bolder {
-    font-weight: 500; }
+    font-weight: 500;
+    opacity: 0; }
 
 #next-link {
   cursor: pointer; }

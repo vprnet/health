@@ -4,7 +4,6 @@ var width = 702,
     height = 600,
     ltGray = "#dddedf",
     dkGray = "#979a9d",
-    red = "#ee9d91",
     yellow = "#ffff99",
     green = "#b7e4a4";
 
@@ -143,6 +142,7 @@ d3.json("static/data/graph.json", function(error, graph) {
         .attr("cx", function(d) { return d.x; })
         .attr("cy", function(d) { return d.y; })
         .attr("id", function(d, i) { return ("node" + i); })
+        .attr("class", "nodes")
         .attr("r", function(d,i) { return nodeInfo[i].radius; });
 
     node.append("text")
@@ -284,7 +284,7 @@ d3.json("static/data/graph.json", function(error, graph) {
     var node8  = svg.select("circle#node8");
     var node9  = svg.select("circle#node9");
     var node10 = svg.select("circle#node10");
-    var allNodes = svg.selectAll("circle");
+    var allNodes = svg.selectAll("circle.nodes");
 
     function clicksPlus() {
         clicks += 1;
@@ -567,15 +567,8 @@ d3.json("static/data/graph.json", function(error, graph) {
                 .duration(1000)
                 .delay(500)
                 .style("stroke", dkGray)
-                .style("fill", red)
-                .each("start", step4c)
+                .style("fill", green)
                 .each("end", clicksPlus);
-        }
-        function step4c(d,i) {
-            $('#step6').attr("class", "inactive-fail");
-            $('#step7').attr("class", "inactive-fail");
-            $('#step8').attr("class", "inactive-fail");
-
         }
         step4a(d,i);
 
@@ -585,83 +578,24 @@ d3.json("static/data/graph.json", function(error, graph) {
         $('#par5').attr("class", "inactive");
         $('#par6').attr("class", "active");
 
+        svg.append("path")
+            .attr("d", lineFunction(steps[8].reverse()))
+            .call(transition);
+
         node9.transition()
-            .delay(1000)
             .duration(1000)
-            .style("fill", "#f7f7f7")
-            .transition()
-            .delay(2000)
-            .duration(1000)
-            .style("fill", red)
-            .transition()
-            .delay(3000)
-            .duration(1000)
-            .style("fill", "#f7f7f7")
-            .transition()
-            .delay(4000)
-            .duration(1000)
-            .style("fill", red);
+            .style("stroke", ltGray);
 
         node1.transition()
             .duration(1000)
-            .style("stroke", dkGray)
-            .style("fill", red)
-            .transition()
-            .delay(1000)
-            .duration(1000)
-            .style("fill", "#f7f7f7")
-            .transition()
-            .delay(2000)
-            .duration(1000)
-            .style("fill", red)
-            .transition()
-            .delay(3000)
-            .duration(1000)
-            .style("fill", "#f7f7f7")
-            .transition()
-            .delay(4000)
-            .duration(1000)
-            .style("fill", red)
+            .delay(500)
+            .style("fill", green)
             .each("end", clicksPlus);
     }
 
     function step6(d,i) {
         $('#par6').attr("class", "inactive");
         $('#par7').attr("class", "active");
-
-        function step6a(d,i) {
-            node1.transition()
-                .duration(1000)
-                .style("fill", yellow);
-
-            node9.transition()
-                .duration(1000)
-                .style("fill", green)
-                .each("end", step6b);
-        }
-
-        function step6b(d,i) {
-            svg.append("path")
-                .attr("d", lineFunction(steps[8].reverse()))
-                .call(transition);
-
-            node9.transition()
-                .duration(1000)
-                .style("stroke", ltGray);
-
-            node1.transition()
-                .duration(1000)
-                .delay(500)
-                .style("fill", green)
-                .each("end", clicksPlus);
-        }
-
-        step6a(d,i);
-    }
-
-    function step7(d,i) {
-        $('#par7').attr("class", "inactive");
-        $('#par8').attr("class", "active");
 
         svg.append("path")
             .attr("d", lineFunction(steps[9]))
@@ -679,11 +613,11 @@ d3.json("static/data/graph.json", function(error, graph) {
             .each("end", clicksPlus);
     }
 
-    function step8(d,i) {
-        $('#par8').attr("class", "inactive");
-        $('#par9').attr("class", "active");
+    function step7(d,i) {
+        $('#par7').attr("class", "inactive");
+        $('#par8').attr("class", "active");
 
-        function step8a(d,i) {
+        function step7a(d,i) {
             svg.append("path")
                 .attr("d", lineFunction(steps[9].reverse()))
                 .call(transition);
@@ -697,10 +631,10 @@ d3.json("static/data/graph.json", function(error, graph) {
                 .delay(500)
                 .style("fill", green)
                 .style("stroke", ltGray)
-                .each("end", step8b);
+                .each("end", step7b);
         }
 
-        function step8b(d,i) {
+        function step7b(d,i) {
 
             allNodes.transition()
                 .duration(800)
@@ -713,10 +647,10 @@ d3.json("static/data/graph.json", function(error, graph) {
                 .duration(800)
                 .delay(1600)
                 .style("stroke", dkGray)
-                .each("end", step8c);
+                .each("end", step7c);
         }
 
-        function step8c(d,i) {
+        function step7c(d,i) {
             svg.append("path")
                 .attr("d", lineFunction(steps[10]))
                 .call(transition);
@@ -725,13 +659,17 @@ d3.json("static/data/graph.json", function(error, graph) {
                 .transition()
                 .duration(1500)
                 .delay(500)
-                .style("stroke", ltGray)
-                .each("end", clicksPlus);
+                .style("stroke", ltGray);
+
+            d3.select('span.bolder')
+                .transition()
+                .duration(1500)
+                .style("opacity", "1");
         }
 
 
 
-        step8a(d,i);
+        step7a(d,i);
 
     }
 
@@ -773,26 +711,20 @@ d3.json("static/data/graph.json", function(error, graph) {
             }
         } else if (clicks === 5) {
             if (!run) {
-                $('#step6').attr("class", "failure");
+                $('#step6').attr("class", "active");
                 step5(d,i);
                 run = true;
             }
         } else if (clicks === 6) {
             if (!run) {
-                $('#step6').attr("class", "active failed");
+                $('#step7').attr("class", "active");
                 step6(d,i);
                 run = true;
             }
         } else if (clicks === 7) {
             if (!run) {
-                $('#step7').attr("class", "active failed");
+                $('#step8').attr("class", "active");
                 step7(d,i);
-                run = true;
-            }
-        } else if (clicks === 8) {
-            if (!run) {
-                $('#step8').attr("class", "active failed");
-                step8(d,i);
                 run = true;
             }
         }
