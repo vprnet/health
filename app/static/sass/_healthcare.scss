@@ -25,6 +25,7 @@
 }
 
 body {
+    padding-top: 40px;
     background: lighten($gray, 45%);
     .navbar {
         border-color: darken($green, 5%);
@@ -160,7 +161,7 @@ body {
         }
         #reporters {
             h4 {
-                margin: 20px 0 2px;
+                margin: 15px 0 2px;
                 font-size: 18px;
                 a {
                     @include lt-link(white, $black, 2px);
