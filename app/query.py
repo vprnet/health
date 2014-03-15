@@ -55,7 +55,8 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
 
         char_count = 0
         paragraphs_needed = 0
-        while char_count < char_limit:
+        par_count = len(full_text)
+        while char_count < char_limit and paragraphs_needed < par_count:
             paragraph = full_text[paragraphs_needed]
             char_count += len(paragraph)
             paragraphs_needed += 1
@@ -155,7 +156,7 @@ def reporter_image(url):
     person_card = soup.find_all(id="person-card")[0]
     try:
         image = person_card.find_all('img')[0].get('src')
-        thumbnail = generate_thumbnail(image, size=(80, 80))
+        thumbnail = generate_thumbnail(image, size=(100, 100))
     except IndexError:
         image = False
         thumbnail = False

@@ -274,11 +274,6 @@ body {
     }
 }
 
-footer {
-    font-size: 10px;
-    color: lighten($gray, 20%);
-}
-
 @media (max-width: 768px) {
     h2 {
         font-size: 32px !important;

@@ -34,16 +34,18 @@
 
 <body>
 
+<div id="page_container">
 {% include "navbar.html" %}
 
 {% block content %}{% endblock %}
+</div>
 
 {% block footer %}
-<div id=footer_container"> <!-- Allows me to do full-width bg for footer -->
-    <div id="footer" class="container">
-        <footer> <p>&copy; Vermont Public Radio 2014</p> </footer>
+<footer>
+    <div class="container">
+        <p><span class="hidden-xs" id="vpr_address">Vermont Public Radio // 365 Troy Avenue // Colchester, VT 05446 // (802) 655-9451</span> <span id="copyright">&copy; Vermont Public Radio 2014</span></p>
     </div>
-</div>
+</footer>
 {% endblock %}
 
 {% block jquery %}

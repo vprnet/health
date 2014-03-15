@@ -3712,12 +3712,21 @@ input[type="button"].btn-block {
 @media print {
   .hidden-print {
     display: none !important; } }
-body {
-  padding-bottom: 40px; }
+a {
+  border-bottom: 2px solid #e6e6e6;
+  color: #4b5151; }
+  a:hover {
+    text-decoration: none;
+    border-color: #999999;
+    color: #3f4444; }
 
-@media (max-width: 768px) {
-  #body {
-    margin-left: 5px; } }
+html, body {
+  height: 100%; }
+
+#page_container {
+  min-height: 100%;
+  padding-bottom: 57px; }
+
 .navbar {
   background-color: #509e2f;
   filter: none;
@@ -3731,6 +3740,8 @@ body {
   min-height: 40px;
   border-radius: 0;
   border: 0; }
+  .navbar a {
+    border: 0; }
   .navbar .navbar-header {
     float: none; }
   .navbar a.navbar-brand {
@@ -3748,8 +3759,20 @@ body {
         display: none; } }
 
 footer {
-  margin-top: 20px;
-  float: right; }
+  background: #646c6c;
+  font-size: 12px;
+  color: #e6e6e6;
+  padding: 20px 0 10px;
+  margin-top: -57px; }
+  footer a {
+    border-bottom: 2px solid #7c8686;
+    color: #d9d9d9; }
+    footer a:hover {
+      text-decoration: none;
+      border-color: #ccd0d0;
+      color: #e6e6e6; }
+  footer span#copyright {
+    float: right; }
 
 #google-ad {
   max-width: 300px;
@@ -3780,6 +3803,12 @@ footer {
       #social-logos a:first-child {
         margin-right: 15px; } }
 
+@media (max-width: 768px) {
+  footer {
+    padding-bottom: 20px; }
+
+  #body {
+    margin-left: 5px; } }
 #vpr-logo {
   padding: 0;
   background-size: 100%;
