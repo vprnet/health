@@ -17,7 +17,6 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
     stories = query_api(tag, numResults)
 
     story_list = []
-    print stories[0]
     for story in stories:
         link = story['link'][0]['$text']
         date = convert_date(story['storyDate']['$text'])
@@ -28,6 +27,7 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
             byline['name'] = story['byline'][0]['name']['$text']
             byline['url'] = story['byline'][0]['link'][0]['$text']
         except KeyError:
+            print "KeyError for byline of story: %s" % title
             byline = False
 
         try:  # if there's an image, determine orientation and define boundary
