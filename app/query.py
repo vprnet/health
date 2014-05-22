@@ -17,6 +17,7 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
     stories = query_api(tag, numResults)
 
     story_list = []
+    print stories[0]
     for story in stories:
         link = story['link'][0]['$text']
         date = convert_date(story['storyDate']['$text'])
@@ -54,7 +55,7 @@ def api_feed(tag, numResults=1, char_limit=240, thumbnail=False):
         except KeyError:
             audio = False
 
-        full_text = [i['$text'] for i in story['text']['paragraph'] if len(i) > 1]
+        full_text = [i['$text'] for i in story['textWithHtml']['paragraph'] if len(i) > 1]
         # if len(i) > 1 ignores pars w/ no text, i.e. when images or audio
 
         char_count = 0
@@ -139,7 +140,7 @@ def query_api(tag, numResults=10):
 
     id_string = ','.join([str(s) for s in tag])
     query = ('http://api.npr.org/query?orgid=692' +
-        '&fields=title,byline,storyDate,image,text,audio' +
+        '&fields=title,byline,storyDate,image,text,textWithHtml,audio' +
         '&sort=dateDesc' +
         '&action=Or' +
         '&output=JSON' +
