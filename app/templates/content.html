@@ -69,7 +69,7 @@
                                     <div id="circle_progress"><i class="icon ion-ios7-circle-filled"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i><i class="icon ion-ios7-circle-outline"></i></div>
                                 </div>
                                 {% for paragraph in follow.text %}
-                                <p>{{ paragraph }}</p>
+                                <p>{{ paragraph|safe }}</p>
                                 {% endfor %}
                                 {{ macros.player("http://cpa.ds.npr.org/vpr/audio/2013/12/vpr-news-health-money-20131218.mp3", 468, "Listen To Follow The Money") }}
                                 <p id="listen"><span class="file glyphicon glyphicon-file"></span> <a href="http://digital.vpr.net/post/following-money-vermont-health-connect">Read the Article</a>
